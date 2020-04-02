@@ -1,0 +1,23 @@
+---
+title: "test_file"
+author: "Brandon Tat"
+date: "3/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(canvassser)
+```
+
+```{r}
+grades <- scrape_html_for_grades("csc225.html")
+
+category_grades <- calc_grade_per_category(grades)
+
+worth_grades <- calc_worth_per_category(category_grades, c(40,26))
+
+bootleg_rogerhub(worth_grades, 36, 93)
+
+scrape_asgn_grades("csc225.html")
+```
+
