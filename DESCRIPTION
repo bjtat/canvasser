@@ -22,7 +22,8 @@ Imports:
     dplyr,
     stringr,
     rvest,
-    xml2
+    xml2,
+    tidyr
 Suggests: 
     knitr,
     rmarkdown
