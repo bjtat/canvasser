@@ -4,9 +4,8 @@
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
 #' log-ins sometimes.
 #'
-#' @import rvest
+#' @importFrom rvest html_nodes html_text
 #' @import stringr
-#' @import xml2
 #'
 #' @return A 2 by X size table with categories and percentages as columns.
 #'
@@ -14,7 +13,7 @@
 
 scrape_grade_breakdown <- function(html_filename) {
 
-  webpage <- read_html(html_filename)
+  webpage <- xml2::read_html(html_filename)
 
   asgn_scores_html <- html_nodes(webpage,'h2, td, th')
 
