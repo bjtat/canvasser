@@ -1,17 +1,21 @@
 ---
-title: "Intro to Canvassser"
-author: "Brandon Tat"
-date: "3/12/2020"
-output:
-  prettydoc::html_pretty:
-    theme: leonids
-    highlight: github
-  
+title: "Basics of Canvasser"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using_canvasser}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-library(canvassser)
-library(prettydoc)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(canvasser)
 ```
 
 
