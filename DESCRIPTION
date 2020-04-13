@@ -2,7 +2,7 @@ Package: canvasser
 Title: Scrape and calculate grades from Canvas
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Brandon",
+    c(person(given = "Brandon",
            family = "Tat",
            role = c("aut", "cre"),
            email = "bjtat@calpoly.edu"),
