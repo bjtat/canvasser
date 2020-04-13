@@ -1,4 +1,4 @@
-Package: canvassser
+Package: canvasser
 Title: Scrape and calculate grades from Canvas
 Version: 0.0.0.9000
 Authors@R: 
@@ -7,7 +7,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "bjtat@calpoly.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: canvasser allows you to scrape data like assignment grades, their worth, what you got on that assignment, and their total points on it. The data can be pulled from a HTML page but it is recommended to download the HTML file onto your local computer then run the data scraping on it. There is also an experimental function to calculate the grade needed on the final for a specified grade.
+Description: canvasser allows you to scrape data like assignment grades, their 
+worth, what you got on that assignment, and their total points on it. 
+The data can be pulled from a HTML page but it is recommended to download the 
+HTML file onto your local computer then run the data scraping on it. There is 
+also an experimental function to calculate the grade needed on the final for a 
+specified grade.
 License: TBD
 Encoding: UTF-8
 LazyData: true
