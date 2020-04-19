@@ -1,5 +1,5 @@
 ---
-title: "Intro to Canvassser"
+title: "Intro to Canvasser"
 author: "Brandon Tat"
 date: "3/12/2020"
 output:
@@ -10,14 +10,14 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(canvassser)
+library(canvasser)
 library(prettydoc)
 ```
 
 
-Canvassser allows one to easily scrape the data for grade and entries in their gradebooks for classes. Furthermore, it is able to calculate what you need on the final to get a target overall grade along with calculating the overall grade per category.
+Canvasser allows one to easily scrape the data for grade and entries in their gradebooks for classes. Furthermore, it is able to calculate what you need on the final to get a target overall grade along with calculating the overall grade per category.
 
-Canvassser allows you to:
+Canvasser allows you to:
 
 * scrape the assignment names and their types
 * scrape the grades per assignment
@@ -31,7 +31,7 @@ We will use my CSC 225 Canvas grade page as an example.
 
 ## Basic functions
 
-Canvassser's functions are:
+Canvasser's functions are:
 
 * `scrape_asgns()` scrapes assignments.
 * `scrape_asgn_grades()` scrapes your grade for each assignment.
