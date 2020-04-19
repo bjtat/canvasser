@@ -15,9 +15,9 @@
 #'
 #' @export
 
-scrape_asgn_grades <- function(html_name) {
+scrape_asgn_grades <- function(html_filename) {
 
-  webpage <- read_html(html_name)
+  webpage <- read_html(html_filename)
 
   asgn_scores_html <- html_nodes(webpage,'.grade')
 
@@ -56,9 +56,9 @@ scrape_asgn_grades <- function(html_name) {
 #'
 #' @export
 
-scrape_total_points <- function(html_name) {
+scrape_total_points <- function(html_filename) {
 
-  webpage <- read_html(html_name)
+  webpage <- read_html(html_filename)
 
   total_points_html <- html_nodes(webpage,'.points_possible')
   total_points_text <- html_text(total_points_html)
@@ -139,15 +139,12 @@ scrape_asgns <- function(html_filename) {
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
 #' log-ins sometimes.
 #'
-#' @import rvest
-#' @import stringr
-#' @import xml2
-#'
 #' @return A table with all the assignments and their grades.
 #'
 #' @export
 
 scrape_html_for_grades <- function(html_filename) {
+
   assignments <- scrape_asgns(html_filename)
   total_grades <- scrape_total_points(html_filename)
   your_grades <- scrape_asgn_grades(html_filename)

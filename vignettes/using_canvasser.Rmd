@@ -1,0 +1,120 @@
+---
+title: "Basics of Canvasser"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using_canvasser}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(canvasser)
+```
+
+
+Canvassser allows one to easily scrape the data for grade and entries in their gradebooks for classes. Furthermore, it is able to calculate what you need on the final to get a target overall grade along with calculating the overall grade per category.
+
+Canvassser allows you to:
+
+* scrape the assignment names and their types
+* scrape the grades per assignment
+* scrape the weight per category of the grades
+* calculate the overall grade per category
+* calculate what you need on the final to obtain your goal overall grade
+
+## Data
+
+We will use my CSC 225 Canvas grade page as an example.
+
+## Basic functions
+
+Canvassser's functions are:
+
+* `scrape_asgns()` scrapes assignments.
+* `scrape_asgn_grades()` scrapes your grade for each assignment.
+* `scrape_total_points()` scrapes total points per assignment
+* `scrape_html_for_grades()` scrapes entire HTML and makes table of all assignments.
+* `scrape_grade_breakdown()` scrapes weights per category of assignments
+* `calc_worth_per_category()` calculates worth per category based off weight.
+* `calc_grade_per_category()` calculates overall grade per cateogry based off worth.
+* `bootleg_rogerhub()` returns grade on final to obtain target grade.
+
+***
+
+### Scrape assignment names nad types using `scrape_asgns()`
+
+`scrape_asgns()` takes in the HTML file and returns the assignments along with their type. The order is based off what is on the Canvas page.
+
+```{r}
+assignments <- scrape_asgns("csc225.html")
+head(assignments, 3)
+```
+
+### Scrape assignment grades using `scrape_asgn_grades()`
+
+`scrape_asgn_grades()` takes in the HTML file and returns the assignment grades. The order is based off what is on the Canvas page.
+
+```{r}
+grades <- scrape_asgn_grades("csc225.html")
+head(grades, 3)
+```
+
+### Scrape assignment's total points using `scrape_total_points()`
+
+`scrape_total_points()`  takes in the HTML file and returns the assignment's total points. The order is based off what is on the Canvas page.
+
+```{r}
+total_points <- scrape_total_points("csc225.html")
+head(total_points, 3)
+```
+
+### Extract all assignments and their grades using `scrape_html_for_grades()`
+
+`scrape_html_for_grades()` calls the pervious functions and puts it all into one dataframe to use. Note that if the grade book is incomplete then it is recommended to call the above functions and bind them manually.
+
+```{r}
+grade_table <- scrape_html_for_grades("csc225.html")
+head(grade_table, 3)
+```
+
+### Extract grade breakdown table using `scrape_grade_breakdown()`
+
+`scrape_grade_breakdown()` gets the grade breakdown percentage table on the right hand side of the HTML page. 
+
+```{r}
+percentage_table <- scrape_grade_breakdown("csc225.html")
+head(percentage_table, 3)
+```
+
+### Extract metadata using `calc_grade_per_category()`
+
+`calc_grade_per_category()` take the output of scrape_html_for_grades() or a equivalent formatted table and calculates the overall grade per category.
+
+```{r}
+grade_per_category_table <- calc_grade_per_category(grade_table)
+grade_per_category_table
+```
+
+### Extract metadata using `calc_worth_per_category()`
+
+`calc_worth_per_category()` takes the output of calc_grade_per_category() and a numeric vector that with the weight per category to calclate how much each category contributes to your overall grade scaled out of 100%. Note that numeric vector needs to align with the types in alphabetically order.
+
+```{r}
+worth_table <- calc_worth_per_category(grade_per_category_table, c(40,26))
+worth_table
+```
+
+### Extract metadata using `bootleg_rogerhub()`
+
+`bootleg_rogerhub()` takes the output of calc_worth_per_category(), the weight of the final (as shown usually on the syllabus or on the grade breakdown table), and your desired overall grade for the class. It returns what grade you need to get on the final to achieve your desired overall grade.
+
+```{r}
+bootleg_rogerhub(worth_table, 36, 93)
+```
