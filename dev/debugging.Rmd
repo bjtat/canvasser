@@ -1,0 +1,94 @@
+---
+title: "debugging"
+author: "Brandon Tat"
+date: "4/23/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(canvasser)
+library(rvest)
+library(stringr)
+```
+
+
+```{r}
+  webpage <- read_html("csc225.html")
+
+  asgns_html <- html_nodes(webpage,'.title')
+  asgns_text <- html_text(asgns_html)
+
+
+  asgns_text <- str_remove_all(asgns_text, "\\n") %>%
+    str_trim() %>%
+    str_c(collapse = "\n") %>%
+    str_replace_all("[:blank:]{5,}", "---") %>%
+    str_split("\n") %>%
+    unlist()
+
+  asgns <- asgns_text %>% str_subset("---")
+
+  TYPE <- str_extract(asgns, "(?<=---)[:alpha:]*")
+
+  ASGN_NAME <- str_extract(asgns, ".*(?=---)")
+
+  asgns <- cbind(as.data.frame(ASGN_NAME), as.data.frame(TYPE))
+```
+
+
+```{r}
+  webpage <- read_html("csc225.html")
+
+  asgn_scores_html <- html_nodes(webpage,'.grade')
+
+  asgn_scores_text <- html_text(asgn_scores_html)
+  
+  asgn_scores_text
+
+  asgn_grades <- str_remove_all(asgn_scores_text, "\\n") %>%
+    str_trim() %>%
+    str_c(collapse = "\n") %>%
+    str_split("\\n") %>%
+    unlist() %>%
+    str_subset("Click to test a different score") %>%
+    str_extract("[:digit:]+") %>%
+    as.numeric() %>%
+    as.data.frame()
+
+  colnames(asgn_grades) <- "GRADE_EARNED"
+```
+
+
+```{r}
+  webpage <- read_html("csc225.html")
+
+  total_points_html <- html_nodes(webpage,'.points_possible')
+  total_points_text <- html_text(total_points_html)
+
+  total_points_text
+  
+  total_points_list <- str_remove_all(total_points_text, "\\n") %>%
+    str_trim() %>%
+    unlist()
+
+  total_points <- as.data.frame(total_points_list[total_points_list != ""]) %>%
+    filter(!(str_detect(total_points_list[total_points_list != ""], "/")))
+
+  #colnames(total_points) <- "TOTAL_POINTS"
+  #$TOTAL_POINTS <- as.numeric(as.character(total_points$TOTAL_POINTS))
+```
+
+
+
+```{r}
+grades <- scrape_html_for_grades("csc225.html")
+
+category_grades <- calc_grade_per_category(grades)
+
+worth_grades <- calc_worth_per_category(category_grades, c(40,26))
+
+bootleg_rogerhub(worth_grades, 36, 93)
+
+scrape_asgn_grades("csc225.html")
+```
+

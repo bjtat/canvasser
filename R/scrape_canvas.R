@@ -1,4 +1,49 @@
 #'
+#' Scrapes the assignment names
+#'
+#' @param html_filename Path to HTML file of Canvas page, recommended to place HTML file in the
+#' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
+#' log-ins sometimes.
+#'
+#' @return A one column dataframe that has all the assignment names from Canvas.
+#' Note that if the grade book is not complete then there may be null/missing values
+#' in the column. I recommend you fix those by hand to match whatever you're doing.
+#'
+#' @import rvest
+#' @import stringr
+#' @import xml2
+#'
+#' @export
+
+scrape_asgns <- function(html_filename) {
+
+  webpage <- read_html(html_filename)
+
+  asgns_html <- html_nodes(webpage,'.title')
+  asgns_text <- html_text(asgns_html)
+
+
+  asgns_text <- str_remove_all(asgns_text, "\\n") %>%
+    str_trim() %>%
+    str_c(collapse = "\n") %>%
+    str_replace_all("[:blank:]{5,}", "---") %>%
+    str_split("\n") %>%
+    unlist()
+
+  asgns <- asgns_text %>% str_subset("---")
+
+  TYPE <- str_extract(asgns, "(?<=---)[:alpha:]*")
+
+  ASGN_NAME <- str_extract(asgns, ".*(?=---)")
+
+  asgns <- cbind(as.data.frame(ASGN_NAME), as.data.frame(TYPE))
+
+  return(asgns)
+
+}
+
+
+#'
 #' Scrapes the grades
 #'
 #' @param html_filename Path to HTML file of Canvas page, recommended to place HTML file in the
@@ -74,62 +119,6 @@ scrape_total_points <- function(html_filename) {
   total_points$TOTAL_POINTS <- as.numeric(as.character(total_points$TOTAL_POINTS))
 
   return(total_points)
-}
-
-
-#'
-#' Scrapes the assignment names
-#'
-#' @param html_filename Path to HTML file of Canvas page, recommended to place HTML file in the
-#' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
-#' log-ins sometimes.
-#'
-#' @return A one column dataframe that has all the assignment names from Canvas.
-#' Note that if the grade book is not complete then there may be null/missing values
-#' in the column. I recommend you fix those by hand to match whatever you're doing.
-#'
-#' @import rvest
-#' @import stringr
-#' @import xml2
-#'
-#' @export
-
-scrape_asgns <- function(html_filename) {
-
-  webpage <- read_html(html_filename)
-
-  asgns_html <- html_nodes(webpage,'.title')
-  asgns_text <- html_text(asgns_html)
-
-
-  asgns_text <- str_remove_all(asgns_text, "\\n") %>%
-    str_trim() %>%
-    str_c(collapse = "\n") %>%
-    str_replace_all("[:blank:]{5,}", "---") %>%
-    str_split("\n") %>%
-    unlist()
-
-  asgns <- asgns_text %>% str_subset("---")
-
-  TYPE <- str_extract(asgns, "(?<=---)[:alpha:]*")
-
-  ASGN_NAME <- str_extract(asgns, ".*(?=---)")
-
-  asgns <- cbind(as.data.frame(ASGN_NAME), as.data.frame(TYPE))
-
-  return(asgns)
-
-  #very slow implementation using for loop
-  # asgns <- c()
-  # categories <- c()
-  # for(thing in test) {
-  #   if(thing != "Total"){
-  #     if(str_detect(thing, "---")) { asgns <- c(asgns, thing) }
-  #     else { categories <- c(categories, thing) }
-  #   }
-  #
-  # }
-  #c(asgns, categories)
 }
 
 #'
