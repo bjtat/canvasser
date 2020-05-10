@@ -73,6 +73,7 @@ scrape_asgn_grades <- function(html_filename) {
     str_c(collapse = "\n") %>%
     str_split("\\n") %>%
     unlist() %>%
+    str_replace("Instructor is working on grades", "Click to test a different score -") %>%
     str_subset("Click to test a different score") %>%
     str_extract("[:digit:]+") %>%
     as.numeric() %>%

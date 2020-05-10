@@ -9,11 +9,12 @@ output: html_document
 library(canvasser)
 library(rvest)
 library(stringr)
+library(dplyr)
 ```
 
 
 ```{r}
-  webpage <- read_html("csc225.html")
+  webpage <- read_html("Grades for Test Student_ kbodwin-sandbox.html")
 
   asgns_html <- html_nodes(webpage,'.title')
   asgns_text <- html_text(asgns_html)
@@ -33,8 +34,14 @@ library(stringr)
   ASGN_NAME <- str_extract(asgns, ".*(?=---)")
 
   asgns <- cbind(as.data.frame(ASGN_NAME), as.data.frame(TYPE))
+  asgns
 ```
 
+    %>%
+    str_extract("[:digit:]+") %>%
+    as.numeric() %>%
+    as.data.frame()
+  
 
 ```{r}
   webpage <- read_html("csc225.html")
@@ -43,24 +50,51 @@ library(stringr)
 
   asgn_scores_text <- html_text(asgn_scores_html)
   
-  asgn_scores_text
 
   asgn_grades <- str_remove_all(asgn_scores_text, "\\n") %>%
     str_trim() %>%
     str_c(collapse = "\n") %>%
     str_split("\\n") %>%
     unlist() %>%
-    str_subset("Click to test a different score") %>%
-    str_extract("[:digit:]+") %>%
-    as.numeric() %>%
-    as.data.frame()
+    str_subset("Click to test a different score") 
+  
+  asgn_grades
 
   colnames(asgn_grades) <- "GRADE_EARNED"
 ```
 
+```{r}
+  webpage <- read_html("Grades for Test Student_ kbodwin-sandbox.html")
+
+  asgn_scores_html <- html_nodes(webpage,'.grade')
+
+  asgn_scores_text <- html_text(asgn_scores_html)
+  
+
+  asgn_grades <- str_remove_all(asgn_scores_text, "\\n") %>%
+    str_trim() %>%
+    str_c(collapse = "\n") %>%
+    str_split("\\n") %>%
+    unlist() %>% 
+    str_replace("Instructor is working on grades", "Click to test a different score -") %>% 
+    str_subset("Click to test a different score") %>%
+    str_extract("[:digit:]+") %>% 
+    as.numeric() %>%
+    as.data.frame()
+  
+  colnames(asgn_grades) <- "GRADE_EARNED"
+
+  asgn_grades
+
+
+```
+ %>%
+    
+
+    
 
 ```{r}
-  webpage <- read_html("csc225.html")
+  webpage <- read_html("Grades for Test Student_ kbodwin-sandbox.html")
 
   total_points_html <- html_nodes(webpage,'.points_possible')
   total_points_text <- html_text(total_points_html)
@@ -81,7 +115,7 @@ library(stringr)
 
 
 ```{r}
-grades <- scrape_html_for_grades("csc225.html")
+grades <- scrape_html_for_grades("Grades for Test Student_ kbodwin-sandbox.html")
 
 category_grades <- calc_grade_per_category(grades)
 

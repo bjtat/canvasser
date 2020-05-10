@@ -1,0 +1,187 @@
+(window["canvasWebpackJsonp"]=window["canvasWebpackJsonp"]||[]).push([[81,626,680],{"0crz":function(t,e,a){"use strict"
+var n=a("ouhR")
+var o=a.n(n)
+var r=a("pQTu")
+var i=a("m0r6")
+Object(i["a"])(JSON.parse('{"ar":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"إظهار النص المقتبس","word_separator":" "}}},"cy":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"dangos testun wedi’i ddyfynnu","word_separator":" "}}},"da":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"vis tekst i gåseøjne","word_separator":" "}}},"da-x-k12":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"vis tekst i gåseøjne","word_separator":" "}}},"de":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"zitierten Text zeigen","word_separator":" "}}},"el":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"προβολή κειμένου που παρατίθεται"}}},"en-AU":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"show quoted text","word_separator":" "}}},"en-AU-x-unimelb":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"show quoted text","word_separator":" "}}},"en-CA":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"show quoted text","word_separator":" "}}},"en-GB":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"show quoted text","word_separator":" "}}},"en-GB-x-lbs":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"show quoted text","word_separator":" "}}},"en-GB-x-ukhe":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"show quoted text","word_separator":" "}}},"es":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"mostrar texto citado","word_separator":" "}}},"fa":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"نمایش متن نقل شده","word_separator":" "}}},"fi":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"näytä lainattu teksti","word_separator":" "}}},"fr":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"afficher le texte entre guillemets","word_separator":" "}}},"fr-CA":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"afficher le texte entre guillemets","word_separator":" "}}},"he":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"מציג ציטוט","word_separator":" "}}},"ht":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"afiche tèks site","word_separator":" "}}},"hu":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"idézett szöveg megjelenítése","word_separator":" "}}},"hy":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"ցույց տալ մեջբերվող տեքստը","word_separator":"-"}}},"is":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"Sýna ívitnaðan texta","word_separator":" "}}},"it":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"mostra testo citato","word_separator":" "}}},"ja":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"引用したテキストを表示","word_separator":" "}}},"ko":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"인용된 텍스트 표시","word_separator":" "}}},"mi":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"whakaatu kuputuhi faahiti","word_separator":"-"}}},"nb":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"vis den merkede teksten","word_separator":" "}}},"nb-x-k12":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"vis den merkede teksten","word_separator":" "}}},"nl":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"geciteerde tekst tonen","word_separator":" "}}},"nn":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"vis sitert tekst","word_separator":" "}}},"pl":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"pokaż cytowany fragment tekstu","word_separator":" "}}},"pt":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"exibir texto citado","word_separator":" "}}},"pt-BR":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"exibir texto citado","word_separator":" "}}},"ru":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"показать цитированный текст","word_separator":" "}}},"sl":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"prikaži citirano besedilo","word_separator":" "}}},"sv":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"visa citerad text","word_separator":" "}}},"sv-x-k12":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"visa citerad text","word_separator":" "}}},"tr":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"alıntılanan metni göster","word_separator":" "}}},"uk":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"Показати цитований текст","word_separator":" "}}},"zh-Hans":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"显示引用的文本","word_separator":" "}}},"zh-Hant":{"lib":{"text_helper":{"ellipsis":"...","quoted_text_toggle":"顯示引用的文字","word_separator":" "}}}}'))
+a("jQeR")
+a("0sPK")
+var s=r["default"].scoped("lib.text_helper")
+var l=a("5Ky4")
+var c,u,d
+c="LINK-PLACEHOLDER"
+u=/\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\([^\s()<>]*\))+(?:\([^\s()<>]*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))|(LINK-PLACEHOLDER)/gi
+e["a"]=d={quoteClump:function(t){return"<div class='quoted_text_holder'> <a href='#' class='show_quoted_text_link'>"+Object(l["a"])(s.t("quoted_text_toggle","show quoted text"))+"</a> <div class='quoted_text' style='display: none;'> "+o.a.raw(t.join("\n"))+" </div> </div>"},formatMessage:function(t){var e,a,n,o,r,i,s,_
+o=[]
+r=[]
+t=t.replace(u,(function(t,e){var a
+r.push(t===c?c:(a=t,"http://"===a.slice(0,7)||"https://"===a.slice(0,8)||(a="http://"+a),o.push(a),"<a href='"+Object(l["a"])(a)+"'>"+Object(l["a"])(t)+"</a>"))
+return c}))
+t=Object(l["a"])(t)
+t=t.replace(new RegExp(c,"g"),(function(t,e){return r.shift()}))
+t=t.replace(/\n/g,"<br />\n")
+i=[]
+s=[]
+_=t.split("\n")
+for(e=0,a=_.length;e<a;e++){n=_[e]
+if(n.match(/^(&gt;|>)/))s.push(n)
+else{s.length&&i.push(d.quoteClump(s))
+s=[]
+i.push(n)}}s.length&&i.push(d.quoteClump(s))
+return i.join("\n")},delimit:function(t){var e,a,n,o,r
+if(isNaN(t))return String(t)
+r=t<0?"-":""
+e=Math.abs(t)
+if(Infinity===e)return String(t)
+a=Math.floor(e)
+o=e===a?"":String(e).replace(/^\d+\./,".")
+while(a>=1e3){n=String(a).replace(/\d+(\d\d\d)$/,",$1")
+a=Math.floor(a/1e3)
+o=n+o}return r+String(a)+o},truncateText:function(t,e){var a,n,o,r,i,l
+null==e&&(e={})
+n=null!=(r=e.max)?r:30
+a=s.t("ellipsis","...")
+l=s.t("word_separator"," ")
+t=(null!=t?t:"").replace(/\s+/g,l).trim()
+if(!t||t.length<=n)return t
+i=0
+while(true){o=t.indexOf(l,i+1)
+if(o<0||o>n-a.length)break
+i=o}i||(i=n-a.length)
+return t.substring(0,i)+a},plainText:function(t){return t.replace(/(<([^>]+)>)/gi,"")}}},"EvX+":function(t,e,a){"use strict"
+var n=a("HIhM")
+const o={}
+const r={getCssVariant(){const t=window.ENV.use_responsive_layout?"responsive_layout":"new_styles"
+const e=window.ENV.use_high_contrast?"high_contrast":"normal_contrast"
+const a=Object(n["c"])()?"_rtl":""
+return"".concat(t,"_").concat(e).concat(a)},urlFor(t,e){let a=e.combinedChecksum,n=e.includesNoVariables
+const o=n?"no_variables":r.getCssVariant()
+return[window.ENV.ASSET_HOST||"","dist","brandable_css",o,"".concat(t,"-").concat(a,".css")].join("/")},loadStylesheet(t,e){if(t in o)return
+const a=document.createElement("link")
+a.rel="stylesheet"
+a.href=r.urlFor(t,e)
+a.setAttribute("data-loaded-by-brandableCss",true)
+document.head.appendChild(a)
+window.canvasCssVariablesPolyfill&&window.canvasCssVariablesPolyfill(a)}}
+e["a"]=r},WEIH:function(t,e,a){"use strict"
+a.d(e,"a",(function(){return c}))
+var n=a("ouhR")
+var o=a.n(n)
+function r(t,e){t.top<0&&(t.top=0)
+return o()(this).css(t).toggleClass("carat-bottom","bottom"===e.vertical)}let i=0
+const s=[]
+function l(t){const e=t.querySelectorAll('a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select')
+const a=e[0]
+const n=e[e.length-1]
+const o=9
+t.addEventListener("keydown",t=>{const e="Tab"===t.key||t.keyCode===o
+if(!e)return
+if(t.shiftKey){if(document.activeElement===a){n.focus()
+t.preventDefault()}}else if(document.activeElement===n){setTimeout(()=>{a.focus()})
+t.preventDefault()}})}class c{constructor(t,e){let a=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{}
+this.ignoreOutsideClickSelector=".ui-dialog"
+this.outsideClickHandler=t=>{o()(t.target).closest(this.el.add(this.trigger).add(this.ignoreOutsideClickSelector)).length||this.hide()}
+this.position=()=>this.el.position({my:"center ".concat("bottom"===this.options.verticalSide?"top":"bottom"),at:"center ".concat(this.options.verticalSide||"top"),of:this.trigger,offset:"0px ".concat(this.offsetPx(),"px"),within:"body",collision:"flipfit ".concat(this.options.verticalSide?"none":"flipfit"),using:r})
+this.content=e
+this.options=a
+this.trigger=o()(t.currentTarget)
+this.triggerAction=t.type
+this.focusTrapped=false
+this.el=o()(this.content).addClass("carat-bottom").data("popover",this).keydown(t=>{t.keyCode===o.a.ui.keyCode.ESCAPE&&this.hide()
+if(t.keyCode!==o.a.ui.keyCode.TAB)return
+const e=o()(":tabbable",this.el)
+const a=o.a.inArray(t.target,e)
+if(-1===a)return
+t.shiftKey?this.focusTrapped||0!==a||this.hide():this.focusTrapped||a!==e.length-1||this.hide()})
+this.el.delegate(".popover_close","keyclick click",t=>{t.preventDefault()
+this.hide()})
+this.show(t)}trapFocus(t){this.focusTrapped=true
+l(t)}show(t){let e
+o.a.screenReaderFlashMessageExclusive("")
+while(e=s.pop())e.hide()
+s.push(this)
+const a="popover-".concat(i++)
+this.trigger.attr({"aria-expanded":true,"aria-controls":a})
+this.previousTarget=t.currentTarget
+this.el.attr({id:a}).appendTo(document.body).show()
+this.position()
+if("mouseenter"!==t.type){this.el.find(":tabbable").first().focus()
+setTimeout(()=>this.el.find(":tabbable").first().focus(),100)}document.querySelector("#application").setAttribute("aria-hidden","true")
+this.el.find(".ui-menu-carat").remove()
+const n=this.options.manualOffset||0
+const r=this.trigger.offset().left-this.el.offset().left
+const l=t.pageX-this.trigger.offset().left
+const c=Math.max(0,this.trigger.width()/2-this.el.width()/2)+20
+const u=this.trigger.width()-c
+const d=Math.min(Math.max(c,l),u)+r+n
+o()('<span class="ui-menu-carat"><span /></span>').css("left",d).prependTo(this.el)
+this.positionInterval=setInterval(this.position,200)
+o()(window).click(this.outsideClickHandler)}hide(){for(let t=0;t<s.length;t++){const e=s[t]
+this===e&&s.splice(t,1)}this.el.detach()
+this.trigger.attr("aria-expanded",false)
+clearInterval(this.positionInterval)
+o()(window).unbind("click",this.outsideClickHandler)
+this.restoreFocus()
+0===s.length&&document.querySelector("#application").setAttribute("aria-hidden","false")}offsetPx(){const t="bottom"===this.options.verticalSide?10:-10
+return this.options.invertOffset?-1*t:t}restoreFocus(){this.previousTarget&&o()(this.previousTarget).is(":visible")&&this.previousTarget.focus()}}},cClk:function(t,e,a){"use strict"
+a.d(e,"a",(function(){return n}))
+function n(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"onChange"
+var a=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"defaultValue"
+return function(n,o,r){var i=t.apply(null,arguments)
+if(i)return i
+if(n[o]&&"function"!==typeof n[e])return new Error(["You provided a '".concat(o,"' prop without an '").concat(e,"' handler on '").concat(r,"'. This will render a controlled component. If the component should be uncontrolled and manage its own state, use '").concat(a,"'. Otherwise, set '").concat(e,"'.")].join(""))}}},fNL0:function(t,e,a){"use strict"
+var n=a("ouhR")
+var o=a.n(n)
+a("JI1W")
+const r={globalEnv:window.ENV}
+function i(t){for(var e=arguments.length,a=new Array(e>1?e-1:0),n=1;n<e;n++)a[n-1]=arguments[n]
+return function(e,n){const o=JSON.stringify(n)
+const i=a.map(t=>r.globalEnv[t]).join("_")
+try{const a=localStorage["".concat(t,"Item")]("_".concat(i,"_").concat(e),o)
+if("undefined"===a)return
+if(a)return JSON.parse(a)}catch(t){return}}}["get","set","remove"].forEach(t=>{r[t]=i(t,"current_user_id")
+r["context".concat(o.a.capitalize(t))]=i(t,"current_user_id","context_asset_string")})
+e["a"]=r},ppAs:function(t,e,a){"use strict"
+var n=a("ouhR")
+var o=a.n(n)
+var r=a("GLiE")
+var i=a.n(r)
+var s=a("5Ky4")
+var l=a("pQTu")
+var c=a("m0r6")
+Object(c["a"])(JSON.parse('{"ar":{"user_content_aaf0fb5a":"محتوى المستخدم"},"cy":{"user_content_aaf0fb5a":"Cynnwys Defnyddiwr"},"da":{"user_content_aaf0fb5a":"Brugerindhold"},"da-x-k12":{"user_content_aaf0fb5a":"Brugerindhold"},"de":{"user_content_aaf0fb5a":"Benutzer-Content"},"el":{"user_content_aaf0fb5a":"Περιεχόμενο Χρήστη"},"en-AU":{"user_content_aaf0fb5a":"User Content"},"en-AU-x-unimelb":{"user_content_aaf0fb5a":"User Content"},"en-CA":{"user_content_aaf0fb5a":"User Content"},"en-GB":{"user_content_aaf0fb5a":"User content"},"en-GB-x-lbs":{"user_content_aaf0fb5a":"User content"},"en-GB-x-ukhe":{"user_content_aaf0fb5a":"User content"},"es":{"user_content_aaf0fb5a":"Contenido del usuario"},"fa":{"user_content_aaf0fb5a":"محتوای کاربر"},"fi":{"user_content_aaf0fb5a":"Käyttäjän sisältö"},"fr":{"user_content_aaf0fb5a":"Contenu de l\'utilisateur"},"fr-CA":{"user_content_aaf0fb5a":"Contenu de l\'utilisateur"},"he":{"user_content_aaf0fb5a":"תוכן משתמש"},"ht":{"user_content_aaf0fb5a":"Kontni Itilizatè"},"hu":{"user_content_aaf0fb5a":"Felhasználói tartalom"},"is":{"user_content_aaf0fb5a":"Notandaefni"},"it":{"user_content_aaf0fb5a":"Contenuto utente"},"ja":{"user_content_aaf0fb5a":"ユーザーコンテンツ"},"mi":{"user_content_aaf0fb5a":"Ihirangi kaiwhakamahi"},"nb":{"user_content_aaf0fb5a":"Brukerinnhold"},"nb-x-k12":{"user_content_aaf0fb5a":"Brukerinnhold"},"nl":{"user_content_aaf0fb5a":"Gebruikersinhoud"},"nn":{"user_content_aaf0fb5a":"Brukarinnhald"},"pl":{"user_content_aaf0fb5a":"Zawartość użytkownika"},"pt":{"user_content_aaf0fb5a":"Conteúdo do Utilizador"},"pt-BR":{"user_content_aaf0fb5a":"Conteúdo do Usuário"},"ru":{"user_content_aaf0fb5a":"Контент пользователя"},"sl":{"user_content_aaf0fb5a":"Vsebina uporabnika"},"sv":{"user_content_aaf0fb5a":"Användarinnehåll"},"sv-x-k12":{"user_content_aaf0fb5a":"Användarinnehåll"},"tr":{"user_content_aaf0fb5a":"Kullanıcı İçeriği"},"uk":{"user_content_aaf0fb5a":"Контент користувача"},"zh-Hans":{"user_content_aaf0fb5a":"用户内容"},"zh-Hant":{"user_content_aaf0fb5a":"使用者內容"}}'))
+a("jQeR")
+a("0sPK")
+var u=l["default"].scoped("user_content")
+const d={translateMathmlForScreenreaders(t){const e=o()("<div/>").html(t.attr("x-canvaslms-safe-mathml")).html()
+const a=o()('<span class="hidden-readable"></span>')
+a.html(e)
+return a},toMediaCommentLink(t){const e=o()("<a\n        id='media_comment_".concat(Object(s["a"])(o()(t).data("media_comment_id")),"'\n        data-media_comment_type='").concat(Object(s["a"])(o()(t).data("media_comment_type")),"'\n        class='instructure_inline_media_comment ").concat(Object(s["a"])(t.nodeName.toLowerCase()),"_comment'\n        data-alt='").concat(Object(s["a"])(o()(t).attr("data-alt")),"'\n      />"))
+e.html(o()(t).html())
+return e},convert(t){let e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{}
+const a=o()("<div />").html(t)
+a.find("video.instructure_inline_media_comment,audio.instructure_inline_media_comment").replaceWith((function(){return d.toMediaCommentLink(this)}))
+a.find("object.instructure_user_content:not(#kaltura_player) embed").remove()
+if(!e.forEditing){a.find("object.instructure_user_content,embed.instructure_user_content").replaceWith((function(){const t=o()(this)
+if(!t.data("uc_snippet")||!t.data("uc_sig"))return this
+const e=i.a.uniqueId("uc_")
+let a="/object_snippet"
+ENV.files_domain&&(a="//".concat(ENV.files_domain).concat(a))
+const n=o()("<form\n            action='".concat(Object(s["a"])(a),"'\n            method='post'\n            class='user_content_post_form'\n            target='").concat(Object(s["a"])(e),"'\n            id='form-").concat(Object(s["a"])(e),"'\n          />"))
+n.append(o()("<input type='hidden'/>").attr({name:"object_data",value:t.data("uc_snippet")}))
+n.append(o()("<input type='hidden'/>").attr({name:"s",value:t.data("uc_sig")}))
+o()("body").append(n)
+setTimeout(()=>n.submit(),0)
+return o()("<iframe\n            class='user_content_iframe'\n            name='".concat(Object(s["a"])(e),"'\n            style='width: ").concat(Object(s["a"])(t.data("uc_width")),"; height: ").concat(Object(s["a"])(t.data("uc_height")),";'\n            frameborder='0'\n            title='").concat(Object(s["a"])(u.t("User Content")),"'\n          />"))}))
+a.find("img.equation_image").each((t,e)=>{const a=o()(e)
+const n=d.translateMathmlForScreenreaders(a)
+a.removeAttr("x-canvaslms-safe-mathml")
+a.after(n)})}return a.html()}}
+e["a"]=d},yE80:function(t,e,a){"use strict"
+var n=a("pQTu")
+e["a"]={strings(t,e){let a=n["default"].locale||"en-US"
+const o={zh_Hant:"zh-Hant"}
+a=o[a]||a
+return t.localeCompare(e,a,{sensitivity:"variant",ignorePunctuation:false,numeric:true})},by(t){return(e,a)=>this.strings(t(e),t(a))},byKey(t){return this.by(e=>e[t])},byGet(t){return this.by(e=>e.get(t))}}}}])
+
+//# sourceMappingURL=81-c-dfa1da2d79.js.map

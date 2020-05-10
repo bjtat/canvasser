@@ -1,0 +1,217 @@
+(window["canvasWebpackJsonp"]=window["canvasWebpackJsonp"]||[]).push([[108],{"HG9+":function(e,t,a){"use strict"
+var r=a("VTBJ")
+var n=a("GLiE")
+var s=a.n(n)
+var i=a("ejBJ")
+var c=a("ODXe")
+var o=a("nibu")
+function d(e,t){const a=s.a.groupBy(e,t)
+return[a.true||[],a.false||[]]}function u(e){const t=parseFloat(e)
+return t&&isFinite(t)?t:0}function l(e,t){let a=Object(c["a"])(e,2),r=a[0],n=a[1]
+let s=Object(c["a"])(t,2),i=s[0],o=s[1]
+const d=i-r
+if(0!==d)return d
+return n.submission.assignment_id-o.submission.assignment_id}function _(e,t){let a=Object(c["a"])(e,2),r=a[0],n=a[1]
+let s=Object(c["a"])(t,2),i=s[0],o=s[1]
+const d=r-i
+if(0!==d)return d
+return n.submission.assignment_id-o.submission.assignment_id}function g(e,t){const a=e.score-t.score
+if(0!==a)return a
+return e.submission.assignment_id-t.submission.assignment_id}function p(e){let t=e.score,a=e.total
+return t/a}function m(e,t,a){if(t.length>0){const a=Object(o["e"])(e,"total")
+const r=Math.max(a,Object(o["e"])(e,"score"))
+const n=Object(o["e"])(t,"score")
+return(r+n)/a}return a[a.length-1]}function f(e,t,a){return function(r,n){const i=s.a.map(n,e=>[e.score-r*e.total,e])
+const d=i.sort(a)
+const u=d.slice(0,e)
+const l=Object(o["e"])(u,e=>{let t=Object(c["a"])(e,1),a=t[0]
+return a})
+const _=s.a.map(u,e=>{let t=Object(c["a"])(e,2),a=(t[0],t[1])
+return a})
+const g=Object(o["e"])(t,e=>e.score-r*e.total)
+return[l+g,_]}}function b(e,t,a,r){const n=s.a.map(e,"total")
+const i=Math.max(...n)
+function o(e,a,r){const n=Math.max(1,a)
+if(e.length<=n)return e
+const s=[...e,...t]
+const o=d(s,e=>0===e.total),u=Object(c["a"])(o,2),l=u[0],_=u[1]
+const g=_.map(p).sort()
+let b=m(_,l,g)
+let h=g[0]
+let A=(h+b)/2
+const v=f(n,t,r)
+let D=v(A,e),w=Object(c["a"])(D,2),O=w[0],j=w[1]
+const G=1/(2*n*i**2)
+while(b-h>=G){O<0?b=A:h=A
+A=(h+b)/2
+if(A===b||A===h)break
+var E=v(A,e)
+var P=Object(c["a"])(E,2)
+O=P[0]
+j=P[1]}return j}const u=o(e,a,l)
+return o(u,r,_)}function h(e,t,a){const r=e.sort(g)
+return s.a.chain(r).last(t).head(a).value()}function A(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{}
+let a=t.drop_lowest||0
+let r=t.drop_highest||0
+const n=t.never_drop||[]
+if(!(a||r))return e
+let i=[]
+let o=e
+if(n.length>0){var u=d(e,e=>s.a.includes(n,e.submission.assignment_id))
+var l=Object(c["a"])(u,2)
+i=l[0]
+o=l[1]}if(0===o.length)return i
+a=Math.min(a,o.length-1)
+r=a+r>=o.length?0:r
+const _=o.length-a
+const g=_-r
+const p=s.a.some(o,e=>e.total>0)
+let m
+m=p?b(o,i,_,g):h(o,_,g)
+m=[...m,...i]
+s.a.difference(o,m).forEach(e=>{e.drop=true})
+return m}function v(e,t,a){const r=s.a.chain(t).filter("hidden").keyBy("assignment_id").value()
+const n=e=>e.omit_from_final_grade||r[e.id]||s.a.isEqual(e.submission_types,["not_graded"])||"unpublished"===e.workflow_state
+const i=s.a.reject(e.assignments,n)
+const c=s.a.keyBy(i,"id")
+let d=s.a.filter(t,e=>c[e.assignment_id])
+d=s.a.reject(d,"excused")
+const l=s.a.map(d,e=>({total:u(c[e.assignment_id].points_possible),score:u(e.score),submitted:null!=e.score&&""!==e.score,pending_review:"pending_review"===e.workflow_state,submission:e}))
+let _=l
+a||(_=s.a.filter(l,e=>e.submitted&&!e.pending_review))
+const g=A(_,e.rules)
+const p=Object(o["d"])(s.a.chain(g).map("score").map(u).value())
+const m=Object(o["e"])(g,"total")
+return{score:p,possible:m,submission_count:s.a.filter(l,"submitted").length,submissions:s.a.map(l,e=>{const t=e.total?Object(o["b"])(e.score,e.total):0
+return{drop:e.drop,percent:u(t),score:u(e.score),possible:e.total,submission:e.submission,submitted:e.submitted}})}}function D(e,t){const a=s.a.uniq(e,"assignment_id")
+return{assignmentGroupId:t.id,assignmentGroupWeight:t.group_weight,current:v(t,a,false),final:v(t,a,true),scoreUnit:"points"}}var w={calculate:D}
+function O(e,t,a){const n=s.a.map(e,e=>{const a=t?e.final:e.current
+return Object(r["a"])({},a,{weight:e.assignmentGroupWeight})})
+if(a.weightAssignmentGroups){const e=n.filter(e=>e.possible)
+const a=Object(o["e"])(e,"weight")
+let r=Object(o["a"])(s.a.map(e,o["g"]))
+0===a?r=null:a<100&&(r=Object(o["f"])(Object(o["g"])({score:r,possible:a,weight:100})))
+const c=Object(o["e"])(e,"submission_count")
+const d=c>0||t?100:0
+let u=r&&Object(i["a"])(r,2)
+u=isNaN(u)?null:u
+return{score:u,possible:d}}return{score:Object(o["e"])(n,"score"),possible:Object(o["e"])(n,"possible")}}function j(e,t){let a=s.a.map(e,e=>{const a=t?e.final:e.current
+return Object(r["a"])({},a,{weight:e.gradingPeriodWeight})})
+t||(a=s.a.filter(a,"possible"))
+const n=Object(o["a"])(s.a.map(a,o["g"]))
+const c=Object(o["e"])(a,"weight")
+const d=0===c?0:Object(o["f"])(n.times(100).div(Math.min(c,100)))
+return{score:Object(i["a"])(d,2),possible:100}}function G(e,t){const a=s.a.groupBy(e.assignments,e=>t[e.id].grading_period_id)
+return s.a.map(a,t=>Object(r["a"])({},e,{assignments:t}))}function E(e,t){return s.a.reduce(e,(e,a)=>{const n=s.a.filter(a.assignments,e=>t[e.id])
+if(n.length>0){const s=Object(r["a"])({},a,{assignments:n})
+return[...e,...G(s,t)]}return e},[])}function P(e){const t={}
+for(let a=0;a<e.length;a++){const n=e[a]
+const s=t[n.assignmentGroupId]
+t[n.assignmentGroupId]=s?Object(r["a"])({},s,{current:{submission_count:s.current.submission_count+n.current.submission_count,submissions:[...s.current.submissions,...n.current.submissions],score:Object(o["d"])([s.current.score,n.current.score]),possible:Object(o["d"])([s.current.possible,n.current.possible])},final:{submission_count:s.final.submission_count+n.final.submission_count,submissions:[...s.final.submissions,...n.final.submissions],score:Object(o["d"])([s.final.score,n.final.score]),possible:Object(o["d"])([s.final.possible,n.final.possible])}}):n}return t}function S(e,t,a,r,n){const i=E(t,r)
+const c=s.a.groupBy(i,e=>{const t=e.assignments[0].id
+return r[t].grading_period_id})
+const o=s.a.keyBy(a,"id")
+const d={}
+const u=[]
+for(let t=0;t<a.length;t++){const r={}
+const i=a[t]
+const l=c[i.id]||[]
+for(let t=0;t<l.length;t++){const a=l[t]
+r[a.id]=w.calculate(e,a)
+u.push(r[a.id])}const _=s.a.values(r)
+d[i.id]={gradingPeriodId:i.id,gradingPeriodWeight:o[i.id].weight||0,assignmentGroups:r,current:O(_,false,n),final:O(_,true,n),scoreUnit:n.weightAssignmentGroups?"percentage":"points"}}if(n.weightGradingPeriods)return{assignmentGroups:P(u),gradingPeriods:d,current:j(d,false,n),final:j(d,true,n),scoreUnit:"percentage"}
+const l=s.a.map(t,t=>w.calculate(e,t))
+return{assignmentGroups:s.a.keyBy(l,e=>e.assignmentGroupId),gradingPeriods:d,current:O(l,false,n),final:O(l,true,n),scoreUnit:n.weightAssignmentGroups?"percentage":"points"}}function y(e,t,a){const r=s.a.map(t,t=>w.calculate(e,t))
+return{assignmentGroups:s.a.keyBy(r,e=>e.assignmentGroupId),current:O(r,false,a),final:O(r,true,a),scoreUnit:a.weightAssignmentGroups?"percentage":"points"}}function I(e,t,a,r,n){const s={weightGradingPeriods:r&&!!r.weighted,weightAssignmentGroups:"percent"===a}
+if(r&&n)return S(e,t,r.gradingPeriods,n,s)
+return y(e,t,s)}t["a"]={calculate:I}},c6Cm:function(e,t,a){"use strict"
+var r=a("ouhR")
+var n=a.n(r)
+var s=a("GLiE")
+var i=a.n(s)
+var c=a("x1Tw")
+a("JI1W")
+const o=e=>n.a.replaceTags(ENV.GRADING_PERIODS_UPDATE_URL,"set_id",e)
+const d=e=>{const t=i.a.map(e,e=>({id:e.id,title:e.title,start_date:e.startDate,end_date:e.endDate,close_date:e.closeDate,weight:e.weight}))
+return{grading_periods:t}}
+t["a"]={deserializePeriods:e=>i.a.map(e,e=>({id:e.id,title:e.title,startDate:new Date(e.start_date),endDate:new Date(e.end_date),closeDate:new Date(e.close_date),isLast:e.is_last,isClosed:e.is_closed,weight:e.weight})),batchUpdate(e,t){return new Promise((a,r)=>c["default"].patch(o(e),d(t)).then(e=>a(this.deserializePeriods(e.data.grading_periods))).catch(e=>r(e)))}}},"e+lF":function(e,t,a){"use strict"
+var r=a("GLiE")
+var n=a.n(r)
+var s=a("ouhR")
+var i=a.n(s)
+var c=a("2DhO")
+a("UlQx")
+const o={parseDates(e,t){n.a.each(t,t=>{const a=!n.a.isUndefined(e[t])
+a&&(e[t]=c["a"].parse(e[t]))})
+return e},formatDatetimeForDisplay(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"medium"
+return i.a.datetimeString(e,{format:t,timezone:ENV.CONTEXT_TIMEZONE})},formatDateForDisplay:e=>i.a.dateString(e,{format:"medium",timezone:ENV.CONTEXT_TIMEZONE}),isMidnight:e=>c["a"].isMidnight(e)}
+t["a"]=o},"e/kD":function(e,t,a){"use strict"
+var r=a("GLiE")
+var n=a.n(r)
+function s(e){let t=arguments.length>1&&void 0!==arguments[1]&&arguments[1]
+let a=n.a.isDate(e)
+t&&!a&&(a=null===e)
+if(!a)throw new Error("`".concat(e,"` must be a Date or null"))}function i(e){if(null==e)throw new Error("'".concat(e,"' must be an array or object"))
+const t=["startDate","endDate","closeDate"]
+const a=n.a.isArray(e)?e:[e]
+n.a.each(a,e=>{n.a.each(t,t=>s(e[t]))})
+return a}function c(e){const t=n.a.isString(e)
+if(!t)throw new Error("Grading period id `".concat(e,"` must be a String"))}class o{constructor(e){this.gradingPeriods=i(e)}static isAllGradingPeriods(e){c(e)
+return"0"===e}get earliestValidDueDate(){const e=n.a.sortBy(this.gradingPeriods,"startDate")
+const t=n.a.find(e,{isClosed:false})
+return t?t.startDate:null}gradingPeriodForDueAt(e){s(e,true)
+return n.a.find(this.gradingPeriods,t=>this.isDateInGradingPeriod(e,t.id,false))||null}isDateInGradingPeriod(e,t){let a=!(arguments.length>2&&void 0!==arguments[2])||arguments[2]
+if(a){s(e,true)
+c(t)}const r=n.a.find(this.gradingPeriods,{id:t})
+if(!r)throw new Error("No grading period has id `".concat(t,"`"))
+return null===e?r.isLast:r.startDate<e&&e<=r.endDate}isDateInClosedGradingPeriod(e){const t=this.gradingPeriodForDueAt(e)
+return!!t&&t.isClosed}}t["a"]=o},"ll/T":function(e,t,a){"use strict"
+var r=a("ouhR")
+var n=a.n(r)
+var s=a("GLiE")
+var i=a.n(s)
+var c=a("x1Tw")
+a("JI1W")
+var o=a("pQTu")
+var d=a("m0r6")
+Object(d["a"])(JSON.parse('{"ar":{"set_created_createdat_895e2243":"تم إنشاء المجموعة %{createdAt}"},"cy":{"set_created_createdat_895e2243":"Wedi creu set %{createdAt}"},"da":{"set_created_createdat_895e2243":"Sæt oprettet %{createdAt}"},"da-x-k12":{"set_created_createdat_895e2243":"Sæt oprettet %{createdAt}"},"de":{"set_created_createdat_895e2243":"Set erstellt %{createdAt}"},"en-AU":{"set_created_createdat_895e2243":"Set created %{createdAt}"},"en-AU-x-unimelb":{"set_created_createdat_895e2243":"Set created %{createdAt}"},"en-CA":{"set_created_createdat_895e2243":"Set created %{createdAt}"},"en-GB":{"set_created_createdat_895e2243":"Set created %{createdAt}"},"en-GB-x-lbs":{"set_created_createdat_895e2243":"Set created %{createdAt}"},"en-GB-x-ukhe":{"set_created_createdat_895e2243":"Set created %{createdAt}"},"es":{"set_created_createdat_895e2243":"Conjunto creado %{createdAt}"},"fa":{"set_created_createdat_895e2243":"مجموعه ایجاد شد %{createdAt}"},"fi":{"set_created_createdat_895e2243":"Määritä luotu %{createdAt}"},"fr":{"set_created_createdat_895e2243":"Ensemble créé %{createdAt}"},"fr-CA":{"set_created_createdat_895e2243":"Ensemble créé %{createdAt}"},"he":{"set_created_createdat_895e2243":"נוצר אוגדן %{createdAt}"},"ht":{"set_created_createdat_895e2243":"Ansanm Kreye %{createdAt}"},"hu":{"set_created_createdat_895e2243":"Beállítás létrehozva %{createdAt}"},"is":{"set_created_createdat_895e2243":"Sett stofnað %{createdAt}"},"it":{"set_created_createdat_895e2243":"Set creato %{createdAt}"},"ja":{"set_created_createdat_895e2243":"セットが %{createdAt} に作成されました"},"mi":{"set_created_createdat_895e2243":"Tautuhi hanga %{createdAt}"},"nb":{"set_created_createdat_895e2243":"Settet opprettet %{createdAt}"},"nb-x-k12":{"set_created_createdat_895e2243":"Settet opprettet %{createdAt}"},"nl":{"set_created_createdat_895e2243":"Set aangemaakt %{createdAt}"},"nn":{"set_created_createdat_895e2243":"Sett oppretta %{createdAt}"},"pl":{"set_created_createdat_895e2243":"Zbiór utworzono %{createdAt}"},"pt":{"set_created_createdat_895e2243":"Grupo criado %{createdAt}"},"pt-BR":{"set_created_createdat_895e2243":"Configuração criada %{createdAt}"},"ru":{"set_created_createdat_895e2243":"Установить создание %{createdAt}"},"sl":{"set_created_createdat_895e2243":"Nabor je ustvarjen %{createdAt}"},"sv":{"set_created_createdat_895e2243":"Uppsättning skapades %{createdAt}"},"sv-x-k12":{"set_created_createdat_895e2243":"Uppsättning skapades %{createdAt}"},"uk":{"set_created_createdat_895e2243":"Набір створено %{createdAt}"},"zh-Hans":{"set_created_createdat_895e2243":"集已创建%{createdAt}"},"zh-Hant":{"set_created_createdat_895e2243":"組創建於 %{createdAt}"}}'))
+a("jQeR")
+a("0sPK")
+var u=o["default"].scoped("gradingPeriodSetsApi")
+var l=a("e+lF")
+var _=a("0DDm")
+var g=a("c6Cm")
+const p=()=>ENV.GRADING_PERIOD_SETS_URL
+const m=()=>ENV.GRADING_PERIOD_SETS_URL
+const f=e=>n.a.replaceTags(ENV.GRADING_PERIOD_SET_UPDATE_URL,"id",e)
+const b=e=>{const t={title:e.title,weighted:e.weighted,display_totals_for_all_grading_periods:e.displayTotalsForAllGradingPeriods}
+return{grading_period_set:t,enrollment_term_ids:e.enrollmentTermIDs}}
+const h=e=>({id:e.id.toString(),title:A(e),weighted:!!e.weighted,displayTotalsForAllGradingPeriods:e.display_totals_for_all_grading_periods,gradingPeriods:g["a"].deserializePeriods(e.grading_periods),permissions:e.permissions,createdAt:new Date(e.created_at)})
+const A=e=>{if(e.title&&e.title.trim())return e.title.trim()
+{const t=l["a"].formatDateForDisplay(new Date(e.created_at))
+return u.t("Set created %{createdAt}",{createdAt:t})}}
+const v=function(e){const t=h(e)
+t.enrollmentTermIDs=e.enrollment_term_ids
+return t}
+const D=e=>i.a.flatten(i.a.map(e,e=>i.a.map(e.grading_period_sets,e=>h(e))))
+t["a"]={deserializeSet:v,list:()=>new Promise((e,t)=>{const a=new _["a"]
+a.getDepaginated(p()).then(t=>e(D(t))).fail(e=>t(e))}),create:e=>c["default"].post(m(),b(e)).then(e=>v(e.data.grading_period_set)),update:e=>c["default"].patch(f(e.id),b(e)).then(t=>e)}},my6A:function(e,t,a){"use strict"
+a.d(t,"a",(function(){return c}))
+a.d(t,"b",(function(){return o}))
+var r=a("LvDl")
+var n=a.n(r)
+var s=a("2DhO")
+var i=a("e/kD")
+function c(e,t){const a={}
+n.a.forEach(e,(e,r)=>{e[t]&&(a[r]=e[t])})
+return a}function o(e,t){let a=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[]
+const r=new i["a"](a)
+const c=n.a.sortBy(a,"startDate")
+t.forEach(t=>{const n=s["a"].parse(t.cached_due_date)
+let i=null
+a.length&&(i=n?r.gradingPeriodForDueAt(n):c[c.length-1])
+const o=e[t.assignment_id]||{}
+o[t.user_id]={due_at:t.cached_due_date,grading_period_id:i?i.id:null,in_closed_grading_period:!!i&&i.isClosed}
+e[t.assignment_id]=o})}}}])
+
+//# sourceMappingURL=108-c-dceab365da.js.map

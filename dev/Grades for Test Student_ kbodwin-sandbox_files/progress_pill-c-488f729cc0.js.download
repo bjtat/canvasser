@@ -1,0 +1,225 @@
+(window["canvasWebpackJsonp"]=window["canvasWebpackJsonp"]||[]).push([[525],{"+ayY":function(n,e,i){"use strict"
+i.d(e,"a",(function(){return b}))
+var t=i("VTBJ")
+var a=i("1OyB")
+var o=i("vuIU")
+var s=i("md7G")
+var r=i("foSv")
+var u=i("Ji7U")
+var d=i("q1tI")
+var c=i.n(d)
+var l=i("hPGw")
+var f=c.a.createElement("path",{d:"M960 1920C429.807 1920 0 1490.193 0 960S429.807 0 960 0s960 429.807 960 960-429.807 960-960 960zm0-101.053c474.384 0 858.947-384.563 858.947-858.947S1434.384 101.053 960 101.053 101.053 485.616 101.053 960 485.616 1818.947 960 1818.947zm-9.32-496.403c-80.024 0-145.128 65.104-145.128 145.128 0 80.024 65.104 145.128 145.128 145.128 80.024 0 145.128-65.104 145.128-145.128 0-80.024-65.104-145.128-145.128-145.128zm192.785-968.86h-385.57l93.901 851.327h197.768l93.901-851.327z",fillRule:"evenodd",stroke:"none",strokeWidth:"1"})
+var b=function(n){Object(u["a"])(e,n)
+function e(){Object(a["a"])(this,e)
+return Object(s["a"])(this,Object(r["a"])(e).apply(this,arguments))}Object(o["a"])(e,[{key:"render",value:function(){return c.a.createElement(l["a"],Object.assign({},this.props,{name:"IconWarning",viewBox:"0 0 1920 1920"}),f)}}])
+e.displayName="IconWarningLine"
+return e}(d["Component"])
+b.glyphName="warning"
+b.variant="Line"
+b.propTypes=Object(t["a"])({},l["a"].propTypes)},"5Shj":function(n,e,i){"use strict"
+var t=i("Ff2n")
+var a=i("1OyB")
+var o=i("vuIU")
+var s=i("md7G")
+var r=i("foSv")
+var u=i("Ji7U")
+var d=i("q1tI")
+var c=i.n(d)
+var l=i("17x9")
+var f=i.n(l)
+var b=i("UCAh")
+var p=i("J2CL")
+var m=i("nAyT")
+var _=i("oXx0")
+var v=i("bZJi")
+var g=i("AdN2")
+var h=function(n){var e=n.typography,i=n.spacing
+return{fontFamily:e.fontFamily,fontWeight:e.fontWeightNormal,fontSize:e.fontSizeSmall,padding:i.small}}
+i.d(e,"a",(function(){return C}))
+var y,O,w,j,S,T
+var k={componentId:"eZLSb",template:function(n){return"\n\n.eZLSb_bGBk{box-sizing:border-box;display:block;font-family:".concat(n.fontFamily||"inherit",";font-size:").concat(n.fontSize||"inherit",";font-weight:").concat(n.fontWeight||"inherit",";padding:").concat(n.padding||"inherit","}")},root:"eZLSb_bGBk"}
+var C=(y=Object(m["a"])("7.0.0",null,"Use Tooltip from ui-tooltip instead."),O=Object(_["a"])(),w=Object(p["themeable"])(h,k),y(j=O(j=w(j=(T=S=function(n){Object(u["a"])(e,n)
+function e(){Object(a["a"])(this,e)
+return Object(s["a"])(this,Object(r["a"])(e).apply(this,arguments))}Object(o["a"])(e,[{key:"render",value:function(){var n=this.props,e=n.children,i=n.tip,a=n.variant,o=n.on,s=n.placement,r=n.mountNode,u=n.positionTarget,d=n.constrain,l=Object(t["a"])(n,["children","tip","variant","on","placement","mountNode","positionTarget","constrain"])
+return c.a.createElement(v["a"],Object.assign({},l,{renderTip:i,on:o,color:"inverse"===a?"primary":"primary-inverse",placement:s,mountNode:r,positionTarget:u,constrain:d}),e)}}])
+e.displayName="Tooltip"
+return e}(d["Component"]),S.propTypes={children:f.a.oneOfType([f.a.node,f.a.func]).isRequired,tip:f.a.node.isRequired,as:f.a.elementType,on:f.a.oneOfType([f.a.oneOf(["click","hover","focus"]),f.a.arrayOf(f.a.oneOf(["click","hover","focus"]))]),variant:f.a.oneOf(["default","inverse"]),placement:b["a"].placement,mountNode:b["a"].mountNode,positionTarget:f.a.oneOfType([g["a"],f.a.func]),constrain:b["a"].constrain},S.defaultProps={on:void 0,variant:"inverse",placement:"top",mountNode:null,positionTarget:void 0,constrain:"window"},T))||j)||j)||j)},HMVb:function(n,e,i){"use strict"
+var t=i("ODXe")
+var a=i("i/8D")
+var o=i("DUTp")
+var s=i("IPIv")
+var r={}
+function u(n,e){if(!a["a"])return 16
+var i=n||Object(o["a"])(n).documentElement
+if(!e&&r[i])return r[i]
+var t=parseInt(Object(s["a"])(i).getPropertyValue("font-size"))
+r[i]=t
+return t}var d=i("CyAq")
+i.d(e,"a",(function(){return c}))
+function c(n,e){var i=e||document.body
+if(!n||"number"===typeof n)return n
+var a=Object(d["a"])(n),o=Object(t["a"])(a,2),s=o[0],r=o[1]
+return"rem"===r?s*u():"em"===r?s*u(i):s}},Yvgw:function(n,e,i){"use strict"
+i.r(e)
+var t=i("An8g")
+var a=i("pQTu")
+var o=i("m0r6")
+Object(o["a"])(JSON.parse('{"ar":{"submission_failed_to_submit_8de4efcd":"تعذر إرسال الإرسال","uploading_submission_4c8d944b":"جارٍ تحميل الإرسال"},"cy":{"submission_failed_to_submit_8de4efcd":"Wedi methu cyflwyno’r Cyflwyniad","uploading_submission_4c8d944b":"Llwytho cyflwyniad i fyny"},"da":{"submission_failed_to_submit_8de4efcd":"Afleveringen blev ikke afleveret","uploading_submission_4c8d944b":"Uploader aflevering"},"da-x-k12":{"submission_failed_to_submit_8de4efcd":"Afleveringen blev ikke afleveret","uploading_submission_4c8d944b":"Uploader aflevering"},"de":{"submission_failed_to_submit_8de4efcd":"Abgabe fehlgeschlagen","uploading_submission_4c8d944b":"Abgabe wird hochgeladen"},"el":{"uploading_submission_4c8d944b":"Γίνεται Μεταφόρτωση της Υποβολής"},"en-AU":{"submission_failed_to_submit_8de4efcd":"Submission Failed to Submit","uploading_submission_4c8d944b":"Uploading Submission"},"en-AU-x-unimelb":{"submission_failed_to_submit_8de4efcd":"Submission Failed to Submit","uploading_submission_4c8d944b":"Uploading Submission"},"en-CA":{"submission_failed_to_submit_8de4efcd":"Submission Failed to Submit","uploading_submission_4c8d944b":"Uploading Submission"},"en-GB":{"submission_failed_to_submit_8de4efcd":"Submission Failed to Submit","uploading_submission_4c8d944b":"Uploading submission"},"en-GB-x-lbs":{"submission_failed_to_submit_8de4efcd":"Submission Failed to Submit","uploading_submission_4c8d944b":"Uploading submission"},"en-GB-x-ukhe":{"submission_failed_to_submit_8de4efcd":"Submission Failed to Submit","uploading_submission_4c8d944b":"Uploading submission"},"es":{"submission_failed_to_submit_8de4efcd":"Entrega no realizada","uploading_submission_4c8d944b":"Cargando la entrega"},"fa":{"uploading_submission_4c8d944b":"در حال بارگذاری مورد ارسالی"},"fi":{"submission_failed_to_submit_8de4efcd":"Lähetyksen lähettäminen epäonnistui","uploading_submission_4c8d944b":"Ladataan lähetystä"},"fr":{"submission_failed_to_submit_8de4efcd":"La soumission a échoué","uploading_submission_4c8d944b":"Envoi en cours"},"fr-CA":{"submission_failed_to_submit_8de4efcd":"Envoi non effectué","uploading_submission_4c8d944b":"Envoi en cours"},"he":{"uploading_submission_4c8d944b":"מעלה הגשה"},"ht":{"submission_failed_to_submit_8de4efcd":"Demand lan Pa Soumèt","uploading_submission_4c8d944b":"Chajman Soumisyon"},"hu":{"uploading_submission_4c8d944b":"Beadandó feltöltése"},"hy":{"uploading_submission_4c8d944b":"Ուղարկված ֆայլի ներբեռնում"},"is":{"submission_failed_to_submit_8de4efcd":"Ekki tókst að senda inn innsendingu","uploading_submission_4c8d944b":"Hlaða upp skilum"},"it":{"submission_failed_to_submit_8de4efcd":"Invio consegna non riuscito","uploading_submission_4c8d944b":"Caricamento consegna"},"ja":{"submission_failed_to_submit_8de4efcd":"提出物を提出できませんでした","uploading_submission_4c8d944b":"提出物をアップロードしています"},"ko":{"uploading_submission_4c8d944b":"제출물 업로드"},"mi":{"submission_failed_to_submit_8de4efcd":"I hapa te tuku i te tāpaetanga","uploading_submission_4c8d944b":"E Tukuake ana te Tapaetanga"},"nb":{"submission_failed_to_submit_8de4efcd":"Innlevering ble ikke levert inn","uploading_submission_4c8d944b":"Laster opp innlevering"},"nb-x-k12":{"submission_failed_to_submit_8de4efcd":"Innlevering ble ikke levert inn","uploading_submission_4c8d944b":"Laster opp innlevering"},"nl":{"submission_failed_to_submit_8de4efcd":"Inlevering mislukt","uploading_submission_4c8d944b":"Bezig met uploaden van inzending"},"nn":{"submission_failed_to_submit_8de4efcd":"Innlevering mislukkast","uploading_submission_4c8d944b":"Lastar opp innlevering"},"pl":{"submission_failed_to_submit_8de4efcd":"Nie udało się przesłać","uploading_submission_4c8d944b":"Trwa przesyłanie zadania"},"pt":{"submission_failed_to_submit_8de4efcd":"A submissão falhou ao enviar","uploading_submission_4c8d944b":"A carregar o envio"},"pt-BR":{"submission_failed_to_submit_8de4efcd":"Falhou em enviar","uploading_submission_4c8d944b":"Realizando upload"},"ru":{"submission_failed_to_submit_8de4efcd":"Не удалось выполнить отправку","uploading_submission_4c8d944b":"Загрузка отправки"},"sl":{"submission_failed_to_submit_8de4efcd":"Pošiljanje oddaje ni uspelo.","uploading_submission_4c8d944b":"Nalaganje oddaje"},"sv":{"submission_failed_to_submit_8de4efcd":"Det gick inte att skicka in","uploading_submission_4c8d944b":"Laddar upp inlämning"},"sv-x-k12":{"submission_failed_to_submit_8de4efcd":"Det gick inte att skicka in","uploading_submission_4c8d944b":"Laddar upp inlämning"},"tr":{"uploading_submission_4c8d944b":"Gönderi Yükleniyor"},"zh-Hans":{"submission_failed_to_submit_8de4efcd":"提交项提交失败","uploading_submission_4c8d944b":"正在上传提交作业"},"zh-Hant":{"submission_failed_to_submit_8de4efcd":"提交項目提交失敗","uploading_submission_4c8d944b":"正在上傳提交項目"}}'))
+i("jQeR")
+i("0sPK")
+var s=a["default"].scoped("progress_pill")
+i("q1tI")
+var r=i("i8i4")
+var u=i.n(r)
+var d=i("5Shj")
+var c=i("whu9")
+var l=i("+ayY")
+var f=i("3lLS")
+var b=i.n(f)
+var p=Object(t["a"])(c["a"],{})
+var m=Object(t["a"])(l["a"],{})
+b()(()=>{const n=document.querySelectorAll(".assignment_presenter_for_submission")
+const e=n=>{switch(n.innerText){case"pending":return[p,s.t("Uploading Submission")]
+case"failed":return[m,s.t("Submission Failed to Submit")]
+default:return null}}
+const i=document.querySelectorAll(".react_pill_container")
+for(let a=0;a<i.length;a++){const o=e(n[a])
+null!==o&&u.a.render(Object(t["a"])(d["a"],{tip:o[1]},void 0,o[0]),i[a])}})},bZJi:function(n,e,i){"use strict"
+var t=i("Ff2n")
+var a=i("VTBJ")
+var o=i("1OyB")
+var s=i("vuIU")
+var r=i("md7G")
+var u=i("foSv")
+var d=i("Ji7U")
+var c=i("q1tI")
+var l=i.n(c)
+var f=i("17x9")
+var b=i.n(f)
+var p=i("nAyT")
+var m=i("KgFQ")
+var _=i("jtGx")
+var v=i("sQ3t")
+var g=i("E+IV")
+var h=i("UCAh")
+var y=i("BTe1")
+var O=i("J2CL")
+var w=i("oXx0")
+var j=i("jsCG")
+var S=i("AdN2")
+var T=function(n){var e=n.typography,i=n.spacing
+return{fontFamily:e.fontFamily,fontWeight:e.fontWeightNormal,fontSize:e.fontSizeSmall,padding:i.small}}
+i.d(e,"a",(function(){return U}))
+var k,C,I,L,z,F
+var N={componentId:"eZLSb",template:function(n){return"\n\n.eZLSb_bGBk{box-sizing:border-box;display:block;font-family:".concat(n.fontFamily||"inherit",";font-size:").concat(n.fontSize||"inherit",";font-weight:").concat(n.fontWeight||"inherit",";padding:").concat(n.padding||"inherit","}")},root:"eZLSb_bGBk"}
+var U=(k=Object(p["a"])("8.0.0",{tip:"renderTip",variant:"color"}),C=Object(w["a"])(),I=Object(O["themeable"])(T,N),k(L=C(L=I(L=(F=z=function(n){Object(d["a"])(e,n)
+function e(){var n
+var i
+Object(o["a"])(this,e)
+for(var t=arguments.length,a=new Array(t),s=0;s<t;s++)a[s]=arguments[s]
+i=Object(r["a"])(this,(n=Object(u["a"])(e)).call.apply(n,[this].concat(a)))
+i._id=Object(y["a"])("Tooltip")
+i.state={hasFocus:false}
+i.handleFocus=function(n){i.setState({hasFocus:true})}
+i.handleBlur=function(n){i.setState({hasFocus:false})}
+return i}Object(s["a"])(e,[{key:"renderTrigger",value:function(){var n=this.props,i=n.children,t=n.as
+var o=this.state.hasFocus
+var s={"aria-describedby":this._id}
+if(t){var r=Object(m["a"])(e,this.props)
+var u=Object(_["a"])(this.props,e.propTypes)
+return l.a.createElement(r,Object.assign({},u,s),i)}return"function"===typeof i?i({focused:o,getTriggerProps:function(n){return Object(a["a"])({},s,{},n)}}):Object(v["a"])(this.props.children,s)}},{key:"render",value:function(){var n=this
+var e=this.props,i=e.renderTip,a=e.isShowingContent,o=e.defaultIsShowingContent,s=e.on,r=e.placement,u=e.mountNode,d=e.constrain,c=e.offsetX,f=e.offsetY,b=e.positionTarget,p=e.onShowContent,m=e.onHideContent,v=e.tip,h=(e.variant,Object(t["a"])(e,["renderTip","isShowingContent","defaultIsShowingContent","on","placement","mountNode","constrain","offsetX","offsetY","positionTarget","onShowContent","onHideContent","tip","variant"]))
+var y=this.props.variant
+y=y?"default"===y?"primary-inverse":"primary":this.props.color
+return l.a.createElement(j["a"],Object.assign({},Object(_["b"])(h),{isShowingContent:a,defaultIsShowingContent:o,on:s,shouldRenderOffscreen:true,shouldReturnFocus:false,placement:r,color:"primary"===y?"primary-inverse":"primary",mountNode:u,constrain:d,shadow:"none",offsetX:c,offsetY:f,positionTarget:b,renderTrigger:function(){return n.renderTrigger()},onShowContent:p,onHideContent:m,onFocus:this.handleFocus,onBlur:this.handleBlur}),l.a.createElement("span",{id:this._id,className:N.root,role:"tooltip"},i?Object(g["a"])(i):v))}}])
+e.displayName="Tooltip"
+return e}(c["Component"]),z.propTypes={children:b.a.oneOfType([b.a.node,b.a.func]).isRequired,renderTip:b.a.oneOfType([b.a.node,b.a.func]),isShowingContent:b.a.bool,defaultIsShowingContent:b.a.bool,as:b.a.elementType,on:b.a.oneOfType([b.a.oneOf(["click","hover","focus"]),b.a.arrayOf(b.a.oneOf(["click","hover","focus"]))]),color:b.a.oneOf(["primary","primary-inverse"]),placement:h["a"].placement,mountNode:h["a"].mountNode,constrain:h["a"].constrain,offsetX:b.a.oneOfType([b.a.string,b.a.number]),offsetY:b.a.oneOfType([b.a.string,b.a.number]),positionTarget:b.a.oneOfType([S["a"],b.a.func]),onShowContent:b.a.func,onHideContent:b.a.func,tip:b.a.node,variant:b.a.oneOf(["default","inverse"])},z.defaultProps={renderTip:void 0,isShowingContent:void 0,defaultIsShowingContent:false,on:void 0,color:"primary",placement:"top",mountNode:null,constrain:"window",offsetX:0,offsetY:0,positionTarget:void 0,onShowContent:function(n){},onHideContent:function(n,e){e.documentClick}},F))||L)||L)||L)},eGSd:function(n,e,i){"use strict"
+i.d(e,"a",(function(){return t}))
+function t(n){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0
+var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{}
+var t,a,o,s
+var r=0
+var u=[]
+var d=false
+if("function"!==typeof n)throw new TypeError("Expected a function")
+var c=!!i.leading
+var l="maxWait"in i
+var f=!("trailing"in i)||!!i.trailing
+var b=l?Math.max(+i.maxWait||0,e):0
+function p(e){var i=t
+var s=a
+t=a=void 0
+r=e
+if(true!==d){o=n.apply(s,i)
+return o}}function m(n){r=n
+u.push(setTimeout(g,e))
+return c?p(n):o}function _(n){var i=n-s
+var t=n-r
+var a=e-i
+return l?Math.min(a,b-t):a}function v(n){var i=n-s
+var t=n-r
+return"undefined"===typeof s||i>=e||i<0||l&&t>=b}function g(){var n=Date.now()
+if(v(n))return h(n)
+u.push(setTimeout(g,_(n)))}function h(n){w()
+if(f&&t)return p(n)
+t=a=void 0
+return o}function y(){d=true
+w()
+r=0
+t=s=a=void 0}function O(){return 0===u.length?o:h(Date.now())}function w(){u.forEach((function(n){return clearTimeout(n)}))
+u=[]}function j(){var n=Date.now()
+var i=v(n)
+for(var r=arguments.length,d=new Array(r),c=0;c<r;c++)d[c]=arguments[c]
+t=d
+a=this
+s=n
+if(i){if(0===u.length)return m(s)
+if(l){u.push(setTimeout(g,e))
+return p(s)}}0===u.length&&u.push(setTimeout(g,e))
+return o}j.cancel=y
+j.flush=O
+return j}},gCYW:function(n,e,i){"use strict"
+i.d(e,"a",(function(){return r}))
+var t=i("QF4Q")
+var a=i("i/8D")
+var o=i("EgqM")
+var s=i("DUTp")
+function r(n){var e={top:0,left:0,height:0,width:0}
+if(!a["a"])return e
+var i=Object(t["a"])(n)
+if(!i)return e
+if(i===window)return{left:window.pageXOffset,top:window.pageYOffset,width:window.innerWidth,height:window.innerHeight,right:window.innerWidth+window.pageXOffset,bottom:window.innerHeight+window.pageYOffset}
+var u=n===document?document:Object(s["a"])(i)
+var d=u&&u.documentElement
+if(!d||!Object(o["a"])(d,i))return e
+var c=i.getBoundingClientRect()
+var l
+for(l in c)e[l]=c[l]
+if(u!==document){var f=u.defaultView.frameElement
+if(f){var b=r(f)
+e.top+=b.top
+e.bottom+=b.top
+e.left+=b.left
+e.right+=b.left}}return{top:e.top+(window.pageYOffset||d.scrollTop)-(d.clientTop||0),left:e.left+(window.pageXOffset||d.scrollLeft)-(d.clientLeft||0),width:(null==e.width?i.offsetWidth:e.width)||0,height:(null==e.height?i.offsetHeight:e.height)||0,right:u.body.clientWidth-e.width-e.left,bottom:u.body.clientHeight-e.height-e.top}}},whu9:function(n,e,i){"use strict"
+i.d(e,"a",(function(){return b}))
+var t=i("VTBJ")
+var a=i("1OyB")
+var o=i("vuIU")
+var s=i("md7G")
+var r=i("foSv")
+var u=i("Ji7U")
+var d=i("q1tI")
+var c=i.n(d)
+var l=i("hPGw")
+var f=c.a.createElement("path",{d:"M1510.854 1779.583l328.006-328.007 81.14 81.37-361.566 361.566H361.566L0 1532.946l81.255-81.37 327.891 328.007h1101.708zM962.334 25l500.284 500.285-81.14 81.37-361.795-361.681v1187.559H904.869V244.973L543.188 606.655l-81.14-81.37L962.333 25z",fillRule:"evenodd",stroke:"none",strokeWidth:"1"})
+var b=function(n){Object(u["a"])(e,n)
+function e(){Object(a["a"])(this,e)
+return Object(s["a"])(this,Object(r["a"])(e).apply(this,arguments))}Object(o["a"])(e,[{key:"render",value:function(){return c.a.createElement(l["a"],Object.assign({},this.props,{name:"IconUpload",viewBox:"0 0 1920 1920"}),f)}}])
+e.displayName="IconUploadLine"
+return e}(d["Component"])
+b.glyphName="upload"
+b.variant="Line"
+b.propTypes=Object(t["a"])({},l["a"].propTypes)}}])
+
+//# sourceMappingURL=progress_pill-c-488f729cc0.js.map
