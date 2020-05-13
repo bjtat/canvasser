@@ -86,12 +86,10 @@ library(dplyr)
 
   asgn_grades
 
+  scrape_total_points("Grades for Test Student_ kbodwin-sandbox.html")
 
 ```
- %>%
-    
 
-    
 
 ```{r}
   webpage <- read_html("Grades for Test Student_ kbodwin-sandbox.html")

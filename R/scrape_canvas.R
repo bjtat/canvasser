@@ -5,6 +5,33 @@
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
 #' log-ins sometimes.
 #'
+#' @param element HTML element to extract
+#'
+#' @return A one column dataframe that has all the assignment names from Canvas.
+#' Note that if the grade book is not complete then there may be null/missing values
+#' in the column. I recommend you fix those by hand to match whatever you're doing.
+#'
+#' @import rvest
+#' @import stringr
+#' @import xml2
+#'
+get_html_element <- function(html_filename, element) {
+
+webpage <- read_html(html_filename)
+asgns_html <- html_nodes(webpage, element)
+asgns_text <- html_text(asgns_html)
+
+return(asgns_text)
+}
+
+
+#'
+#' Scrapes the assignment names
+#'
+#' @param html_filename Path to HTML file of Canvas page, recommended to place HTML file in the
+#' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
+#' log-ins sometimes.
+#'
 #' @return A one column dataframe that has all the assignment names from Canvas.
 #' Note that if the grade book is not complete then there may be null/missing values
 #' in the column. I recommend you fix those by hand to match whatever you're doing.
@@ -17,10 +44,12 @@
 
 scrape_asgns <- function(html_filename) {
 
-  webpage <- read_html(html_filename)
+  # webpage <- read_html(html_filename)
+  #
+  # asgns_html <- html_nodes(webpage,'.title')
+  # asgns_text <- html_text(asgns_html)
 
-  asgns_html <- html_nodes(webpage,'.title')
-  asgns_text <- html_text(asgns_html)
+  asgns_text <- get_html_element(html_filename, '.title')
 
 
   asgns_text <- str_remove_all(asgns_text, "\\n") %>%
@@ -62,11 +91,11 @@ scrape_asgns <- function(html_filename) {
 
 scrape_asgn_grades <- function(html_filename) {
 
-  webpage <- read_html(html_filename)
+  # webpage <- read_html(html_filename)
+  # asgn_scores_html <- html_nodes(webpage,'.grade')
+  # asgn_scores_text <- html_text(asgn_scores_html)
 
-  asgn_scores_html <- html_nodes(webpage,'.grade')
-
-  asgn_scores_text <- html_text(asgn_scores_html)
+  asgns_text <- get_html_element(html_filename, '.grade')
 
   asgn_grades <- str_remove_all(asgn_scores_text, "\\n") %>%
     str_trim() %>%
@@ -104,10 +133,11 @@ scrape_asgn_grades <- function(html_filename) {
 
 scrape_total_points <- function(html_filename) {
 
-  webpage <- read_html(html_filename)
+  # webpage <- read_html(html_filename)
+  # total_points_html <- html_nodes(webpage,'.points_possible')
+  # total_points_text <- html_text(total_points_html)
 
-  total_points_html <- html_nodes(webpage,'.points_possible')
-  total_points_text <- html_text(total_points_html)
+  total_points_text <- get_html_element(html_filename, '.points_possible')
 
   total_points_list <- str_remove_all(total_points_text, "\\n") %>%
     str_trim() %>%
