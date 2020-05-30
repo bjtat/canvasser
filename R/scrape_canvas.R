@@ -1,15 +1,13 @@
 #'
-#' Scrapes the assignment names
+#' Converts html into strings
 #'
 #' @param html_filename Path to HTML file of Canvas page, recommended to place HTML file in the
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
-#' log-ins sometimes.
+#' password protected websites.
 #'
 #' @param element HTML element to extract
 #'
-#' @return A one column dataframe that has all the assignment names from Canvas.
-#' Note that if the grade book is not complete then there may be null/missing values
-#' in the column. I recommend you fix those by hand to match whatever you're doing.
+#' @return The HTML in string form
 #'
 #' @import rvest
 #' @import stringr
@@ -32,7 +30,7 @@ return(asgns_text)
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
 #' log-ins sometimes.
 #'
-#' @return A one column dataframe that has all the assignment names from Canvas.
+#' @return A one column tibble that has all the assignment names from Canvas.
 #' Note that if the grade book is not complete then there may be null/missing values
 #' in the column. I recommend you fix those by hand to match whatever you're doing.
 #'
@@ -44,31 +42,37 @@ return(asgns_text)
 
 scrape_asgns <- function(html_filename) {
 
-  # webpage <- read_html(html_filename)
-  #
-  # asgns_html <- html_nodes(webpage,'.title')
-  # asgns_text <- html_text(asgns_html)
+  # Taking HTML and converting it to strings
+  raw_asgns_text <- get_html_element(html_filename, '.title')
 
-  asgns_text <- get_html_element(html_filename, '.title')
-
-
-  asgns_text <- str_remove_all(asgns_text, "\\n") %>%
+  # Cleaning up the strings of their HTML junk to be parsed correctly
+  cleaned_asgns_text <- str_remove_all(raw_asgns_text, "\\n") %>%
     str_trim() %>%
     str_c(collapse = "\n") %>%
-    str_replace_all("[:blank:]{5,}", "---") %>%
+    str_replace_all("[:blank:]{5,}", "@@@@") %>%
     str_split("\n") %>%
     unlist()
 
-  asgns <- asgns_text %>% str_subset("---")
+  # Remove the '\r' chracter from CRLF if user is on Windows (Unix/MacOS systems use LF)
+  # and grabs strings with the token
+  asgn_names_with_token <- cleaned_asgns_text %>%
+    str_replace_all("\r", "") %>%
+    str_subset("@@@@")
 
-  TYPE <- str_extract(asgns, "(?<=---)[:alpha:]*")
+  # Extract assignment name from left hand side of the token
+  asgn_name <- str_extract(asgn_names_with_token, ".*(?=@@@@)")
 
-  ASGN_NAME <- str_extract(asgns, ".*(?=---)")
 
-  asgns <- cbind(as.data.frame(ASGN_NAME), as.data.frame(TYPE))
+  # Extract assignment type from right hand side of the token
+  type <- str_extract(asgn_names_with_token, "(?<=@@@@).*")
 
-  return(asgns)
+  # Puts assignment names and types into a tibble
+  assignments <- tibble(
+    ASGN_NAME = asgn_name,
+    ASGN_TYPE = type
+  )
 
+  return(assignments)
 }
 
 
@@ -83,7 +87,7 @@ scrape_asgns <- function(html_filename) {
 #' @import stringr
 #' @import xml2
 #'
-#' @return A one column dataframe that has all the grades from Canvas. Note that if the
+#' @return A one column tibble that has all the grades from Canvas. Note that if the
 #' grade book is not complete then there may be null/missing values in the column. I
 #' recommend you fix those by hand to match whatever you're doing.
 #'
@@ -95,9 +99,11 @@ scrape_asgn_grades <- function(html_filename) {
   # asgn_scores_html <- html_nodes(webpage,'.grade')
   # asgn_scores_text <- html_text(asgn_scores_html)
 
-  asgns_text <- get_html_element(html_filename, '.grade')
+  # Taking HTML and converting it to strings
+  raw_asgn_scores_text <- get_html_element(html_filename, '.grade')
 
-  asgn_grades <- str_remove_all(asgn_scores_text, "\\n") %>%
+  # Cleans up strings, then extracts the numeric grade values for each assignment
+  cleaned_asgn_grades <- str_remove_all(raw_asgn_scores_text, "\\n") %>%
     str_trim() %>%
     str_c(collapse = "\n") %>%
     str_split("\\n") %>%
@@ -105,12 +111,14 @@ scrape_asgn_grades <- function(html_filename) {
     str_replace("Instructor is working on grades", "Click to test a different score -") %>%
     str_subset("Click to test a different score") %>%
     str_extract("[:digit:]+") %>%
-    as.numeric() %>%
-    as.data.frame()
+    as.numeric()
 
-  colnames(asgn_grades) <- "GRADE_EARNED"
+  # Puts assignment names and types into a tibble
+  assignment_grades <- tibble(
+    GRADE_EARNED = cleaned_asgn_grades
+  )
 
-  return(asgn_grades)
+  return(assignment_grades)
 }
 
 
@@ -121,7 +129,7 @@ scrape_asgn_grades <- function(html_filename) {
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to
 #' log-ins sometimes.
 #'
-#' @return A one column dataframe that has all the total points from Canvas. Note that if the
+#' @return A one column tibble that has all the total points from Canvas. Note that if the
 #' grade book is not complete then there may be null/missing values in the column. I
 #' recommend you fix those by hand to match whatever you're doing.
 #'
@@ -137,17 +145,26 @@ scrape_total_points <- function(html_filename) {
   # total_points_html <- html_nodes(webpage,'.points_possible')
   # total_points_text <- html_text(total_points_html)
 
-  total_points_text <- get_html_element(html_filename, '.points_possible')
+  # Taking HTML and converting it to strings
+  raw_total_points_text <- get_html_element("csc225.html", '.points_possible')
 
-  total_points_list <- str_remove_all(total_points_text, "\\n") %>%
+  # Cleans up strings, then extracts the total possible grades for each assignment
+  cleaned_total_points_list <- str_remove_all(raw_total_points_text, "\\n") %>%
     str_trim() %>%
-    unlist()
+    str_subset("[:digit:]")
 
-  total_points <- as.data.frame(total_points_list[total_points_list != ""]) %>%
-    filter(!(str_detect(total_points_list[total_points_list != ""], "/")))
+  # Very messy converting to filter out annoying values with "/"
+  total_points_df <- as.data.frame(cleaned_total_points_list[cleaned_total_points_list != ""]) %>%
+    filter(!(str_detect(cleaned_total_points_list[cleaned_total_points_list != ""], "/")))
 
-  colnames(total_points) <- "TOTAL_POINTS"
-  total_points$TOTAL_POINTS <- as.numeric(as.character(total_points$TOTAL_POINTS))
+  # Casting all the values from factor to character to numeric
+  colnames(total_points_df) <- "TOTAL_POINTS"
+  total_points_values <- as.numeric(as.character(total_points_df$TOTAL_POINTS))
+
+  # Putting values into a tibble
+  total_points <- tibble(
+    TOTAL_POINTS = total_points_values
+  )
 
   return(total_points)
 }
@@ -161,15 +178,20 @@ scrape_total_points <- function(html_filename) {
 #'
 #' @return A table with all the assignments and their grades.
 #'
+#' @import dplyr
+#'
 #' @export
 
 scrape_html_for_grades <- function(html_filename) {
 
+  # get each column of the table
   assignments <- scrape_asgns(html_filename)
   total_grades <- scrape_total_points(html_filename)
   your_grades <- scrape_asgn_grades(html_filename)
 
-  finished_asgn_table <- cbind(assignments, your_grades, total_grades)
+  # column bind them then convert to a tibble
+  finished_asgn_table <- cbind(assignments, your_grades, total_grades) %>%
+    as_tibble()
 
   return(finished_asgn_table)
 }

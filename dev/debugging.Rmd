@@ -12,29 +12,34 @@ library(stringr)
 library(dplyr)
 ```
 
+```{r}
+scrape_html_for_grades("csc225.html") 
+```
+
+
 
 ```{r}
-  webpage <- read_html("Grades for Test Student_ kbodwin-sandbox.html")
+  get_html_element <- function(html_filename, element) {
 
-  asgns_html <- html_nodes(webpage,'.title')
+  webpage <- read_html(html_filename)
+  asgns_html <- html_nodes(webpage, element)
   asgns_text <- html_text(asgns_html)
+  
+  return(asgns_text)
+  }
+  
+  assignments <- scrape_asgns("csc225.html")
+  total_grades <- scrape_total_points("csc225.html")
+  your_grades <- scrape_asgn_grades("csc225.html")
 
 
-  asgns_text <- str_remove_all(asgns_text, "\\n") %>%
-    str_trim() %>%
-    str_c(collapse = "\n") %>%
-    str_replace_all("[:blank:]{5,}", "---") %>%
-    str_split("\n") %>%
-    unlist()
-
-  asgns <- asgns_text %>% str_subset("---")
-
-  TYPE <- str_extract(asgns, "(?<=---)[:alpha:]*")
-
-  ASGN_NAME <- str_extract(asgns, ".*(?=---)")
-
-  asgns <- cbind(as.data.frame(ASGN_NAME), as.data.frame(TYPE))
-  asgns
+  finished_asgn_table <- cbind(assignments, your_grades, total_grades) %>% 
+    as_tibble()
+  
+  finished_asgn_table
+  class(finished_asgn_table)
+  
+  
 ```
 
     %>%

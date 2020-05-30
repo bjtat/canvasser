@@ -28,13 +28,18 @@ scrape_grade_breakdown <- function(html_filename) {
     str_trim() %>%
     str_split("\\n")
 
-  Categories <- test[[1]] %>% str_subset("[:alpha:]+") %>% as.data.frame()
-  colnames(Categories) <- "CATEGORIES"
+  Categories <- test[[1]] %>% str_subset("[:alpha:]+")
+  #colnames(Categories) <- "CATEGORIES"
 
-  Percentage <- test[[1]] %>% str_subset("^[:digit:]+") %>% as.data.frame()
-  colnames(Percentage) <- "PERCENTAGES"
+  Percentage <- test[[1]] %>% str_subset("^[:digit:]+")
+  #colnames(Percentage) <- "PERCENTAGES"
 
-  breakdown_table <- cbind(Categories, Percentage)
+  breakdown_table <- tibble(
+    CATEGORIES = Categories,
+    PERCENTAGES = Percentage
+  )
+
+    #cbind(Categories, Percentage)
 
   return(breakdown_table)
 }

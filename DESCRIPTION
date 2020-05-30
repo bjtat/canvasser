@@ -23,7 +23,9 @@ Imports:
     stringr,
     rvest,
     xml2,
-    tidyr
+    tidyr,
+    tibble,
+    readr
 Suggests: 
     knitr,
     rmarkdown,
