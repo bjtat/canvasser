@@ -7,20 +7,17 @@
 #' @importFrom rvest html_nodes html_text
 #' @import stringr
 #'
-#' @return A 2 by X size table with categories and percentages as columns.
+#' @return A 2 by X size tibble with categories and percentages as columns.
 #'
 #' @export
 
 scrape_grade_breakdown <- function(html_filename) {
 
-  webpage <- xml2::read_html(html_filename)
+  # Taking HTML and converting it to strings
+  raw_asgn_scores_text <- get_html_element(html_filename, 'h2, td, th')
 
-  asgn_scores_html <- html_nodes(webpage,'h2, td, th')
-
-  asgn_scores_text <- html_text(asgn_scores_html)
-
-
-  test <- str_remove_all(asgn_scores_text, "\\n") %>%
+  # Cleans up strings, then extracts the grade breakdown from the right side of the page
+  cleaned_asgn_scores_text <- str_remove_all(raw_asgn_scores_text, "\\n") %>%
     str_trim() %>%
     str_c(collapse = "\n") %>%
     str_extract("(?<=Assignments are weighted by group:)(.|\\n)*") %>%
@@ -28,18 +25,15 @@ scrape_grade_breakdown <- function(html_filename) {
     str_trim() %>%
     str_split("\\n")
 
-  Categories <- test[[1]] %>% str_subset("[:alpha:]+")
-  #colnames(Categories) <- "CATEGORIES"
+  # Creates category and percentage vectors to combine
+  Categories <- cleaned_asgn_scores_text[[1]] %>% str_subset("[:alpha:]+")
 
-  Percentage <- test[[1]] %>% str_subset("^[:digit:]+")
-  #colnames(Percentage) <- "PERCENTAGES"
+  Percentage <- cleaned_asgn_scores_text[[1]] %>% str_subset("^[:digit:]+")
 
   breakdown_table <- tibble(
     CATEGORIES = Categories,
     PERCENTAGES = Percentage
   )
-
-    #cbind(Categories, Percentage)
 
   return(breakdown_table)
 }

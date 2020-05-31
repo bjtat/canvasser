@@ -13,7 +13,7 @@ library(dplyr)
 ```
 
 ```{r}
-scrape_html_for_grades("csc225.html") 
+scrape_grade_breakdown("csc225.html") 
 ```
 
 

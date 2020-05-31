@@ -146,7 +146,7 @@ scrape_total_points <- function(html_filename) {
   # total_points_text <- html_text(total_points_html)
 
   # Taking HTML and converting it to strings
-  raw_total_points_text <- get_html_element("csc225.html", '.points_possible')
+  raw_total_points_text <- get_html_element(html_filename, '.points_possible')
 
   # Cleans up strings, then extracts the total possible grades for each assignment
   cleaned_total_points_list <- str_remove_all(raw_total_points_text, "\\n") %>%
