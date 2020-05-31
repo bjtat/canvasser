@@ -1,11 +1,11 @@
-"","ASGN_NAME","TYPE"
-"1","","Assignments"
-"2","","Assignments"
-"3","","Assignments"
-"4","","Assignments"
-"5","","Assignments"
-"6","","Assignments"
-"7","","Assignments"
-"8","","Midterm"
-"9","","Midterm"
-"10","","Final"
+ASGN_NAME,ASGN_TYPE
+Assignment 1: Binary and Hexadecimal,Assignments
+Assignment 2: Machine Languages,Assignments
+Assignment 3: Assembly Languages,Assignments
+Assignment 4: Subroutines,Assignments
+Assignment 5: Traps and Interrupts,Assignments
+Assignment 6: Functions,Assignments
+Assignment 7: Pointers and Structures,Assignments
+Midterm I,Midterm Exams
+Midterm II,Midterm Exams
+Final Exam,Final Exam

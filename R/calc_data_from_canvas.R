@@ -14,10 +14,10 @@
 calc_grade_per_category <- function(grades) {
   grade_table <- grades %>%
     tidyr::drop_na() %>%
-    group_by(TYPE) %>%
+    group_by(ASGN_TYPE) %>%
     summarise_at(c("GRADE_EARNED", "TOTAL_POINTS"), sum) %>%
     mutate(GRADE = (GRADE_EARNED / TOTAL_POINTS)*100) %>%
-    select(TYPE, GRADE)
+    select(ASGN_TYPE, GRADE)
 
   return(grade_table)
 }

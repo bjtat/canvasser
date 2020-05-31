@@ -1,5 +1,5 @@
 #'
-#' Converts html into strings
+#' Converts html into strings, helper function for all the functions with html_filename as input
 #'
 #' @param html_filename Path to HTML file of Canvas page, recommended to place HTML file in the
 #' same folder as where this is being used. Can also take Canvas HTML link but may not work due to

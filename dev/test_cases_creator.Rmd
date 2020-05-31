@@ -7,52 +7,53 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(canvasser)
+library(readr)
 ```
 
 ### Test case 1, scrape_grade_breakdown
 ```{r}
 categories_df <- scrape_grade_breakdown("csc225.html")
-write.csv(categories_df, "categories_df_testcase.csv")
+write_csv(categories_df, "categories_df_testcase.csv")
 ```
 
 ### Test case 2, scrape_asgns
 ```{r}
 asgn_df <- scrape_asgns("csc225.html")
-write.csv(asgn_df, "asgn_df_testcase.csv")
+write_csv(asgn_df, "asgn_df_testcase.csv")
 ```
 
 ### Test case 3, scrape_asgn_grades
 ```{r}
 asgn_grades_df <- scrape_asgn_grades("csc225.html")
-write.csv(asgn_grades_df, "asgn_grades_df_testcase.csv")
+write_csv(asgn_grades_df, "asgn_grades_df_testcase.csv")
 ```
 
 ### Test case 4, scrape_total_points
 ```{r}
 total_points_df <- scrape_total_points("csc225.html")
-write.csv(total_points_df, "total_points_df_testcase.csv")
+write_csv(total_points_df, "total_points_df_testcase.csv")
 ```
 
 ### Test case 5, scrape_html_for_grades
 ```{r}
 scrape_html_for_grades_df <- scrape_html_for_grades("csc225.html")
-write.csv(scrape_html_for_grades_df, "scrape_html_for_grades_df_testcase.csv")
+write_csv(scrape_html_for_grades_df, "scrape_html_for_grades_df_testcase.csv")
 ```
 
 ### Test case 6, calc_grade_per_category
 ```{r}
 calc_grade_per_category_df <- calc_grade_per_category(scrape_html_for_grades_df)
-write.csv(calc_grade_per_category_df, "calc_grade_per_category_df_testcase.csv")
+write_csv(calc_grade_per_category_df, "calc_grade_per_category_df_testcase.csv")
 ```
 
 ### Test case 7, calc_worth_per_category
 ```{r}
 calc_worth_per_category_df <- calc_worth_per_category(calc_grade_per_category_df, c(40,26))
-write.csv(calc_worth_per_category_df, "calc_worth_per_category_df_testcase.csv")
+write_csv(calc_worth_per_category_df, "calc_worth_per_category_df_testcase.csv")
 ```
 
-### Test case , bootleg_rogerhub
+### Test case 8, bootleg_rogerhub
 ```{r}
 bootleg_rogerhub_df <- bootleg_rogerhub(calc_worth_per_category_df ,36, 93)
-write.csv(bootleg_rogerhub_df, "bootleg_rogerhub_df_testcase.csv")
+write_csv(bootleg_rogerhub_df, "bootleg_rogerhub_df_testcase.csv")
 ```

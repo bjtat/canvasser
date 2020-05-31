@@ -1,11 +1,11 @@
-"","ASGN_NAME","TYPE","GRADE_EARNED","TOTAL_POINTS"
-"1","","Assignments",20,20
-"2","","Assignments",20,20
-"3","","Assignments",20,20
-"4","","Assignments",20,20
-"5","","Assignments",20,20
-"6","","Assignments",20,20
-"7","","Assignments",NA,20
-"8","","Midterm",42,50
-"9","","Midterm",41,50
-"10","","Final",NA,100
+ASGN_NAME,ASGN_TYPE,GRADE_EARNED,TOTAL_POINTS
+Assignment 1: Binary and Hexadecimal,Assignments,20,20
+Assignment 2: Machine Languages,Assignments,20,20
+Assignment 3: Assembly Languages,Assignments,20,20
+Assignment 4: Subroutines,Assignments,20,20
+Assignment 5: Traps and Interrupts,Assignments,20,20
+Assignment 6: Functions,Assignments,20,20
+Assignment 7: Pointers and Structures,Assignments,NA,20
+Midterm I,Midterm Exams,42,50
+Midterm II,Midterm Exams,41,50
+Final Exam,Final Exam,NA,100

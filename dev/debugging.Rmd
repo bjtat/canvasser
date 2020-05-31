@@ -13,7 +13,13 @@ library(dplyr)
 ```
 
 ```{r}
-scrape_grade_breakdown("csc225.html") 
+  categories_df <- scrape_grade_breakdown("csc225.html")
+  write_csv(categories_df, "categories_df_testcase.csv")
+
+
+  expected <- readr::read_csv("categories_df_testcase.csv")
+
+  expect_equal(scrape_grade_breakdown("csc225.html"), expected)
 ```
 
 
