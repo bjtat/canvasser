@@ -49,21 +49,19 @@ test_that("calc_grade_per_category returns correct tibble", {
 
   expected <- readr::read_csv("calc_grade_per_category_df_testcase.csv")
 
-  expect_equal(calc_grade_per_category("csc225.html"), expected)
+  expect_equal(calc_grade_per_category(scrape_html_for_grades("csc225.html")), expected)
 })
 
-# ### Test case 7, calc_worth_per_category
-# test_that("calc_worth_per_category returns correct tibble", {
-#
-#   expected <- readr::read_csv("calc_worth_per_category_df_testcase.csv")
-#
-#   expect_equal(calc_worth_per_category("csc225.html"), expected)
-# })
+### Test case 7, calc_worth_per_category
+test_that("calc_worth_per_category returns correct tibble", {
+  actual <- calc_worth_per_category(calc_grade_per_category(scrape_html_for_grades("csc225.html")), c(40,26))
+  expected <- readr::read_csv("calc_worth_per_category_df_testcase.csv")
+  expect_equal(actual, expected)
+})
 
-### Test case 8, bootleg_rogerhub
-# test_that("scrape_asgns returns correct tibble", {
-#
-#   expected <- readr::read_csv("asgn_df_testcase.csv")
-#
-#   expect_equal(bootleg_rogerhub(calc_worth_per_category_df ,36, 93), expected)
-# })
+## Test case 8, bootleg_rogerhub
+test_that("scrape_asgns returns correct tibble", {
+  table <- calc_worth_per_category(calc_grade_per_category(scrape_html_for_grades("csc225.html")), c(40,26))
+
+  expect_equal(bootleg_rogerhub(table ,36, 93), 92.5, tolerance= 0.05)
+})

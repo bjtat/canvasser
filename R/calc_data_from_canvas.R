@@ -43,10 +43,10 @@ calc_worth_per_category <- function(grade_table, worth_vector) {
   WORTH <- as.data.frame(as.numeric(worth_vector) / sum(as.numeric(worth_vector)))
   colnames(WORTH) <- "WORTH"
 
-  updated_table <- cbind(grade_table, WORTH)
+  updated_table <- tibble::as_tibble(cbind(grade_table, WORTH))
 
   return(updated_table)
-
+  # ISSUE: need to change this to a tibble
 }
 
 #'

@@ -30,6 +30,7 @@ scrape_grade_breakdown <- function(html_filename) {
 
   Percentage <- cleaned_asgn_scores_text[[1]] %>% str_subset("^[:digit:]+")
 
+  # Puts categories and percentages into a tibble
   breakdown_table <- tibble(
     CATEGORIES = Categories,
     PERCENTAGES = Percentage

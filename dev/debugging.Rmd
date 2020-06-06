@@ -12,14 +12,25 @@ library(stringr)
 library(dplyr)
 ```
 
+
 ```{r}
-  categories_df <- scrape_grade_breakdown("csc225.html")
-  write_csv(categories_df, "categories_df_testcase.csv")
+  grade_table <- calc_grade_per_category(scrape_html_for_grades("csc225.html"))
+  class(grade_table)
+  worth_vector <- c(40,26)
+  WORTH <- as.data.frame(as.numeric(worth_vector) / sum(as.numeric(worth_vector)))
+  colnames(WORTH) <- "WORTH"
+
+  updated_table <- as_tibble(cbind(grade_table, WORTH))
+  class(updated_table)
+```
 
 
-  expected <- readr::read_csv("categories_df_testcase.csv")
 
-  expect_equal(scrape_grade_breakdown("csc225.html"), expected)
+```{r}
+
+  actual <- calc_worth_per_category(calc_grade_per_category(scrape_html_for_grades("csc225.html")), c(40,26))
+  expected <- readr::read_csv("calc_worth_per_category_df_testcase.csv")
+  testthat::expect_equal(actual, expected)
 ```
 
 
