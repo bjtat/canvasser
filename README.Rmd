@@ -18,43 +18,65 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of canvasser is to ...
+The goal of canvasser is to make it easier for students to scrape their gradebook from canvas into a tibble to use as a dataset. Canvasser also allows students to calculate the weight of each category and what they need on the final for a desired grade.
 
 ## Installation
 
-You can install the released version of canvasser from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of canvasser from [CRAN](https://CRAN.R-project.org) with: 
 
 ``` r
 install.packages("canvasser")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+And the development version from [GitHub](https://github.com/) with: https://github.com/Brandontat5/canvasser
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("Brandontat5/canvassser")
 ```
-## Example
+## Example - Getting assignment names
 
-This is a basic example which shows you how to solve a common problem:
+This is how to scrape the html file for assignment names:
 
-```{r example}
+```{r example 1}
 library(canvasser)
-## basic example code
+scrape_asgns("./dev/csc225.html")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+## Example - Getting assignment grades
 
-```{r cars}
-summary(cars)
+This is how to scrape the html file for assignment grades:
+
+```{r example 2}
+library(canvasser)
+scrape_asgn_grades("./dev/csc225.html")
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+## Example - Getting assignment max points possible
 
-You can also embed plots, for example:
+This is how to scrape the html file for assignment point totals:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r example 3}
+library(canvasser)
+scrape_total_points("./dev/csc225.html")
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+## Example - Scraping the gradebook
+
+This is how to scrape the html for the entire dataset:
+
+```{r example 4}
+library(canvasser)
+scrape_html_for_grades("./dev/csc225.html")
+```
+
+
+## Example - Calculating weight of each category in the gradebook
+
+This is how to use the output of scrape_html_for_grades() in another function:
+
+```{r example 5}
+library(canvasser)
+table <- scrape_html_for_grades("./dev/csc225.html")
+calc_grade_per_category(table)
+```

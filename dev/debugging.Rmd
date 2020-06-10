@@ -53,17 +53,12 @@ library(dplyr)
   finished_asgn_table <- cbind(assignments, your_grades, total_grades) %>% 
     as_tibble()
   
-  finished_asgn_table
+  finished_asgn_tablez`
   class(finished_asgn_table)
   
   
 ```
 
-    %>%
-    str_extract("[:digit:]+") %>%
-    as.numeric() %>%
-    as.data.frame()
-  
 
 ```{r}
   webpage <- read_html("csc225.html")
