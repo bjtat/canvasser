@@ -34,9 +34,20 @@ And the development version from [GitHub](https://github.com/) with: https://git
 # install.packages("devtools")
 devtools::install_github("Brandontat5/canvassser")
 ```
+
+## Before you get started - How to download HTML
+
+- Go to Canvas.
+- Select on a class.
+- Click on the grade section.
+- Your URL should be something like https://canvas.[schoolName].edu/courses/[someRandomNumbers]/grades.
+- Right click on the page and "save as", make sure it is HTML and save it to where you can write a PATH to it.
+
+For example, in these examples. I saved the HTML file called "csc225.html" inside my dev folder which is in one directory deeper than this file. So, my PATH is "./dev/csc225.html". If you save it in the same directory as your R file your PATH should be "./[fileNameOfHtml].html".
+
 ## Example - Getting assignment names
 
-This is how to scrape the html file for assignment names:
+This is how to scrape the html file for assignment names. This will return a tibble of assignment name and the category they go under in the grade book. All the data types will be character for easy string manpulation.
 
 ```{r example 1}
 library(canvasser)
@@ -45,38 +56,34 @@ scrape_asgns("./dev/csc225.html")
 
 ## Example - Getting assignment grades
 
-This is how to scrape the html file for assignment grades:
+This is how to scrape the html file for assignment grades. All the grades recieved for the assignments will be returned as doubles. Assignments not graded will have NA as their grade. This will be a tibble column of doubles.
 
 ```{r example 2}
-library(canvasser)
 scrape_asgn_grades("./dev/csc225.html")
 ```
 
 ## Example - Getting assignment max points possible
 
-This is how to scrape the html file for assignment point totals:
+This is how to scrape the html file for assignment point totals. Similarly to scrape_asgn_grades(), it returns the same double tibble column but with the total points possible for an assignment. This will be a tibble column of doubles.
 
 ```{r example 3}
-library(canvasser)
 scrape_total_points("./dev/csc225.html")
 ```
 
 ## Example - Scraping the gradebook
 
-This is how to scrape the html for the entire dataset:
+This is how to scrape the html for the entire dataset. It will have the data from the three pervious functions all in the same tibble. This is closer to a conventional dataset to use. 
 
 ```{r example 4}
-library(canvasser)
 scrape_html_for_grades("./dev/csc225.html")
 ```
 
 
 ## Example - Calculating weight of each category in the gradebook
 
-This is how to use the output of scrape_html_for_grades() in another function:
+This is how to use the output of scrape_html_for_grades() in another function. This is one of the functions provided in order to use the dataset tibble returned by scrape_html_for_grades(). It drops any assignment that have a NA for their grade and uses the points as the weight per assignment. 
 
 ```{r example 5}
-library(canvasser)
 table <- scrape_html_for_grades("./dev/csc225.html")
 calc_grade_per_category(table)
 ```
