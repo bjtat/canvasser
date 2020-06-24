@@ -12,7 +12,7 @@ same folder as where this is being used. Can also take Canvas HTML link but may 
 log-ins sometimes.}
 }
 \value{
-A one column dataframe that has all the assignment names from Canvas.
+A one column tibble that has all the assignment names from Canvas.
 Note that if the grade book is not complete then there may be null/missing values
 in the column. I recommend you fix those by hand to match whatever you're doing.
 }

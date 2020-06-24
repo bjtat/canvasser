@@ -4,7 +4,7 @@
 \alias{scrape_total_points}
 \title{Scrapes the total points possible}
 \usage{
-scrape_total_points(html_name)
+scrape_total_points(html_filename)
 }
 \arguments{
 \item{html_filename}{Path to HTML file of Canvas page, recommended to place HTML file in the
@@ -12,7 +12,7 @@ same folder as where this is being used. Can also take Canvas HTML link but may 
 log-ins sometimes.}
 }
 \value{
-A one column dataframe that has all the total points from Canvas. Note that if the
+A one column tibble that has all the total points from Canvas. Note that if the
 grade book is not complete then there may be null/missing values in the column. I
 recommend you fix those by hand to match whatever you're doing.
 }

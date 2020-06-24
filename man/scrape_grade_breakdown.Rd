@@ -12,7 +12,7 @@ same folder as where this is being used. Can also take Canvas HTML link but may 
 log-ins sometimes.}
 }
 \value{
-A 2 by X size table with categories and percentages as columns.
+A 2 by X size tibble with categories and percentages as columns.
 }
 \description{
 Scrapes the grade breakdown table on the right header of the Canvas grade page

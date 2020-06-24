@@ -1,5 +1,5 @@
 Package: canvasser
-Title: Scrape and calculate grades from Canvas
+Title: Process gradebook data from Canvas
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Brandon",
@@ -12,7 +12,7 @@ Authors@R:
 Description: Allows user to scrape data from Canvas Learning Managment System; 
     including assignment grades, grade breakdowns, course averages, and course totals. 
     The data can be pulled from a HTML page but it is recommended to download the 
-    HTML file onto your local computer then run the data scraping on it. 
+    HTML file onto your local computer then run the data extraction on it. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
