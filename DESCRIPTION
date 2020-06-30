@@ -8,7 +8,8 @@ Authors@R:
            email = "bjtat@calpoly.edu"),
     person(given = "Kelly",
             family = "Bodwin",
-            role = "aut", "cre"))
+            role = "aut", "cre"),
+            email = "kelly@bodwin.us")
 Description: Allows user to scrape data from Canvas Learning Managment System; 
     including assignment grades, grade breakdowns, course averages, and course totals. 
     The data can be pulled from a HTML page but it is recommended to download the 
