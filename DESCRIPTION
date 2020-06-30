@@ -4,11 +4,11 @@ Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Brandon",
            family = "Tat",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "bjtat@calpoly.edu"),
     person(given = "Kelly",
             family = "Bodwin",
-            role = "aut"))
+            role = "aut", "cre"))
 Description: Allows user to scrape data from Canvas Learning Managment System; 
     including assignment grades, grade breakdowns, course averages, and course totals. 
     The data can be pulled from a HTML page but it is recommended to download the 
