@@ -12,3 +12,6 @@ New submission
 
 ## Messages
 
+win-builder checker flags a "possibly invalid URL" - this URL is
+provided as a template example and is not meant to direct anywhere
+
