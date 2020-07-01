@@ -1,5 +1,5 @@
 Package: canvasser
-Title: Process gradebook data from Canvas
+Title: Process Gradebook Data from Canvas
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Brandon",
@@ -10,7 +10,7 @@ Authors@R:
             family = "Bodwin",
             role = c("aut", "cre"),
             email = "kelly@bodwin.us"))
-Description: Allows user to scrape data from Canvas Learning Managment System; 
+Description: Allows user to scrape data from Canvas Learning Management System; 
     including assignment grades, grade breakdowns, course averages, and course totals. 
     The data can be pulled from a HTML page but it is recommended to download the 
     HTML file onto your local computer then run the data extraction on it. 
