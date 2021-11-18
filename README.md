@@ -22,7 +22,7 @@ install.packages("canvasser")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
-<https://github.com/Brandontat5/canvasser>
+<https://github.com/bjtat/canvasser>
 
 ``` r
 # install.packages("devtools")
